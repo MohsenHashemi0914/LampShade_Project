@@ -19,9 +19,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopManagement.Application"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SM.Infrastructure", "SM.Infrastructure", "{F2E0A9E2-6C1E-49E1-8EA1-FF9CBD85B482}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopManagement.Infrastructure.EFCore", "ShopManagement.Infrastructure.EFCore\ShopManagement.Infrastructure.EFCore.csproj", "{E4786DA7-440F-482F-91BE-20CC8F2FAD31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopManagement.Infrastructure.EFCore", "ShopManagement.Infrastructure.EFCore\ShopManagement.Infrastructure.EFCore.csproj", "{E4786DA7-440F-482F-91BE-20CC8F2FAD31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopManagement.Configuration", "ShopManagement.Configuration\ShopManagement.Configuration.csproj", "{0BA080C3-2F9D-48D6-B0EB-4A9466B32A5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopManagement.Configuration", "ShopManagement.Configuration\ShopManagement.Configuration.csproj", "{0BA080C3-2F9D-48D6-B0EB-4A9466B32A5E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceHost", "ServiceHost\ServiceHost.csproj", "{897747F3-39FC-41F8-9837-144261CDD877}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{0BA080C3-2F9D-48D6-B0EB-4A9466B32A5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BA080C3-2F9D-48D6-B0EB-4A9466B32A5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BA080C3-2F9D-48D6-B0EB-4A9466B32A5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{897747F3-39FC-41F8-9837-144261CDD877}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{897747F3-39FC-41F8-9837-144261CDD877}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{897747F3-39FC-41F8-9837-144261CDD877}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{897747F3-39FC-41F8-9837-144261CDD877}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
