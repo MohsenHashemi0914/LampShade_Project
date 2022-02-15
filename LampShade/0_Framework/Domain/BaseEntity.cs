@@ -2,9 +2,9 @@
 
 namespace _0_Framework.Domain
 {
-    public class BaseEntity
+    public class BaseEntity<TKey>
     {
-        public long Id { get; private set; }
+        public TKey Id { get; private set; }
         public DateTime CreationDate { get; private set; }
 
         public BaseEntity()

@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace _0_Framework.Domain
 {
-    public interface IRepository<in TKey, T> where T : class
+    public interface IRepository<in TKey, T> where T : BaseEntity<TKey>
     {
         void SaveChanges();
         void Add(T entity);

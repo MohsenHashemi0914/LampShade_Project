@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace _0_Framework.Infrastructure
 {
-    public class BaseRepository<TKey, T> : IRepository<TKey, T> where T : class
+    public class BaseRepository<TKey, T> : IRepository<TKey, T> where T : BaseEntity<TKey>
     {
         #region Constructor
 
