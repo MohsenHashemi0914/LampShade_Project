@@ -212,7 +212,7 @@
         </div>
     </div>
 
-    <script src="~/AdminTheme/assets/js/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/AdminTheme/assets/js/bootstrap.min.js"></script>
     <script src="~/AdminTheme/assets/js/waves.js"></script>
     <script src="~/AdminTheme/assets/js/wow.min.js"></script>
@@ -254,26 +254,29 @@
 
     <!-- Todo -->
     <script src="~/AdminTheme/assets/js/jquery.todo.js"></script>
+
+    <partial name="_ValidationScriptsPartial" />
+
     <script src="~/AdminTheme/assets/js/site.js"></script>
 
     @RenderSection("Scripts", false)
 
-    @*<script>
-        $('.persianDateInput').persianDatepicker({
-            format: 'YYYY/MM/DD',
-            autoClose: true,
-            initialValueType: "persian"
-        });
-    </script>
-
-    <script src="https://cdn.tiny.cloud/1/03bywyfc22f080o11wndvso5su892zkphj49li728tkw9f3f/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
-        tinymce.init({
-            selector: '#BodyContent',
-            plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-            toolbar_mode: 'floating',
-        });
-    </script>*@
+            $('.persianDateInput').persianDatepicker({
+                format: 'YYYY/MM/DD',
+                autoClose: true,
+                initialValueType: "persian"
+            });
+        </script>
+
+        <script src="https://cdn.tiny.cloud/1/03bywyfc22f080o11wndvso5su892zkphj49li728tkw9f3f/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+        <script>
+            tinymce.init({
+                selector: '#BodyContent',
+                plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+                toolbar_mode: 'floating',
+            });
+        </script>
 
 </body>
 </html>
