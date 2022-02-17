@@ -5,7 +5,7 @@ namespace ShopManagement.Application.Contracts.Product
 {
     public interface IProductApplication
     {
-        OperationResult InStock(long id);
+        OperationResult IsInStock(long id);
         OperationResult NotInStock(long id);
         OperationResult Create(CreateProduct command);
         OperationResult Edit(EditProduct command);

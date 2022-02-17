@@ -20,6 +20,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">جستجو در محصولات</h3>
+                <span class="text-danger">@Model.Message</span>
             </div>
             <div class="panel-body">
                 <form class="form-inline" role="form" method="get">
@@ -63,6 +64,7 @@
                                     <th>کد</th>
                                     <th>گروه محصولی</th>
                                     <th>قیمت</th>
+                                    <th>موجودی</th>
                                     <th>تاریخ تولید</th>
                                     <th>عملیات</th>
                                 </tr>
@@ -81,12 +83,32 @@
                                             <td>@item.Code</td>
                                             <td>@item.Category</td>
                                             <td>@item.UnitPrice</td>
+                                            <td class="text-center">
+                                                @if (item.IsInStock)
+                                                {
+                                                    <i class="fa fa-check fa-3x text-success"></i>
+                                                }
+                                                else
+                                                {
+                                                    <i class="fa fa-remove fa-3x text-danger"></i>
+                                                }
+                                            </td>
                                             <td>@item.CreationDate</td>
                                             <td>
-                                                <a class="btn btn-warning pull-right m-rl-5"
+                                                <a class="btn btn-warning btn-custom waves-effect waves-light m-b-5"
                                                    href="#showmodal=@Url.Page("./Index", "Edit", new { id = item.Id})">
                                                     <i class="fa fa-edit"></i> ویرایش
                                                 </a>
+                                                @if (item.IsInStock)
+                                                {
+                                                    <a class="btn btn-danger btn-custom waves-effect waves-light m-b-5" asp-page="./Index" asp-page-handler="NotInStock"
+                                                       asp-route-id="@item.Id">اتمام موجودی</a>
+                                                }
+                                                else
+                                                {
+                                                    <a class="btn btn-success btn-custom waves-effect waves-light m-b-5" asp-page="./Index" asp-page-handler="IsInStock"
+                                                       asp-route-id="@item.Id">موجود شد!</a>
+                                                }
                                             </td>
                                         </tr>
                                     }

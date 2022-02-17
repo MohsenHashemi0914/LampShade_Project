@@ -18,7 +18,7 @@ namespace ShopManagement.Application
 
         #endregion
 
-        public OperationResult InStock(long id)
+        public OperationResult IsInStock(long id)
         {
             var operation = new OperationResult();
             var product = _productRepository.Get(id);

@@ -9,16 +9,19 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.Products
 {
     public class IndexModel : PageModel
     {
+        [TempData] public string Message { get; set; }
+
         public SelectList ProductCategories;
         public ProductSearchModel SearchModel;
-        public List<ProductViewModel> Products { get; set; }
+        public List<ProductViewModel> Products;
 
         #region Constructor
 
         private readonly IProductApplication _productApplication;
         private readonly IProductCategoryApplication _productCategoryApplication;
 
-        public IndexModel(IProductApplication productApplication, IProductCategoryApplication productCategoryApplication)
+        public IndexModel(IProductApplication productApplication,
+            IProductCategoryApplication productCategoryApplication)
         {
             _productApplication = productApplication;
             _productCategoryApplication = productCategoryApplication;
@@ -34,7 +37,11 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.Products
 
         public IActionResult OnGetCreate()
         {
-            return Partial("./Create", new CreateProduct());
+            var command = new CreateProduct
+            {
+                Categories = _productCategoryApplication.GetProductCategories()
+            };
+            return Partial("./Create", command);
         }
 
         public IActionResult OnPostCreate(CreateProduct command)
@@ -45,14 +52,35 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.Products
 
         public IActionResult OnGetEdit(long id)
         {
-            var productCategory = _productApplication.GetDetails(id);
-            return Partial("./Edit", productCategory);
+            var product = _productApplication.GetDetails(id);
+            product.Categories = _productCategoryApplication.GetProductCategories();
+            return Partial("./Edit", product);
         }
 
         public IActionResult OnPostEdit(EditProduct command)
         {
             var result = _productApplication.Edit(command);
             return new JsonResult(result);
+        }
+
+        public IActionResult OnGetNotInStock(long id)
+        {
+            var result = _productApplication.NotInStock(id);
+
+            if (!result.IsSucceeded)
+                Message = result.Message;
+
+            return RedirectToPage("./Index");
+        }
+
+        public IActionResult OnGetIsInStock(long id)
+        {
+            var result = _productApplication.IsInStock(id);
+
+            if (!result.IsSucceeded)
+                Message = result.Message;
+
+            return RedirectToPage("./Index");
         }
     }
 }

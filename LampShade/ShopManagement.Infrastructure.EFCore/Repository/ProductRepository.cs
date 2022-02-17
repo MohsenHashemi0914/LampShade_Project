@@ -49,10 +49,13 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
                 {
                     Id = x.Id,
                     Name = x.Name,
+                    Code = x.Code,
                     Picture = x.Picture,
+                    UnitPrice = x.UnitPrice,
                     CreationDate = x.CreationDate.ToString(CultureInfo.InvariantCulture),
                     CategoryId = x.CategoryId,
-                    Category = x.Category.Name
+                    Category = x.Category.Name,
+                    IsInStock = x.IsInStock
                 });
 
             if (!string.IsNullOrWhiteSpace(searchModel.Name))
@@ -61,7 +64,7 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
             if (!string.IsNullOrWhiteSpace(searchModel.Code))
                 query = query.Where(x => x.Code == searchModel.Code);
 
-            if (searchModel.CategoryId != 0)
+            if (searchModel.CategoryId > 0)
                 query = query.Where(x => x.CategoryId == searchModel.CategoryId);
 
             return query.OrderByDescending(x => x.Id).ToList();
