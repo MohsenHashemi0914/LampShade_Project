@@ -43,6 +43,7 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
                     Product = x.Product.Name,
                     Picture = x.Picture,
                     ProductId = x.ProductId,
+                    IsRemoved = x.IsRemoved,
                     CreationDate = x.CreationDate.ToString(CultureInfo.InvariantCulture)
                 });
 
