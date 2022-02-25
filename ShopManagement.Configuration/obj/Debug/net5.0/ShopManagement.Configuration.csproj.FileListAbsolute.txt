@@ -44,3 +44,5 @@ E:\My-First-Real-Project\ShopManagement.Configuration\obj\Debug\net5.0\ShopManag
 E:\My-First-Real-Project\ShopManagement.Configuration\obj\Debug\net5.0\ShopManagement.Configuration.dll
 E:\My-First-Real-Project\ShopManagement.Configuration\obj\Debug\net5.0\ref\ShopManagement.Configuration.dll
 E:\My-First-Real-Project\ShopManagement.Configuration\obj\Debug\net5.0\ShopManagement.Configuration.pdb
+E:\My-First-Real-Project\ShopManagement.Configuration\bin\Debug\net5.0\01_LampshadeQuery.dll
+E:\My-First-Real-Project\ShopManagement.Configuration\bin\Debug\net5.0\01_LampshadeQuery.pdb

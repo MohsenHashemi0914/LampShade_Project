@@ -31,7 +31,8 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
                 Title = x.Title,
                 Heading = x.Heading,
                 Text = x.Text,
-                BtnText = x.BtnText
+                BtnText = x.BtnText,
+                Link = x.Link
             }).FirstOrDefault(x => x.Id == id);
         }
 
@@ -40,7 +41,7 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
             return _context.Slides.Select(x => new SlideViewModel
             {
                 Id = x.Id,
-                Picture = x.Title,
+                Picture = x.Picture,
                 Heading = x.Heading,
                 Title = x.Title,
                 CreationDate = x.CreationDate.ToString(CultureInfo.InvariantCulture),
