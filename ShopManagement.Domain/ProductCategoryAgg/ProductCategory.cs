@@ -17,6 +17,10 @@ namespace ShopManagement.Domain.ProductCategoryAgg
         public List<Product> Products { get; private set; }
 
 
+        protected ProductCategory()
+        {
+        }
+
         public ProductCategory(string name, string description, string picture,
             string pictureAlt, string pictureTitle, string keyWords,
             string metaDescription, string slug)
