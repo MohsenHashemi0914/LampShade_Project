@@ -13,7 +13,12 @@
 	</ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DiscountManagement.Configuration\DiscountManagement.Configuration.csproj" />
     <ProjectReference Include="..\ShopManagement.Configuration\ShopManagement.Configuration.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Administration\Pages\Discount\ColleagueDiscounts\" />
   </ItemGroup>
 
 </Project>

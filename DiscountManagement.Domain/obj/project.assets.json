@@ -173,6 +173,19 @@
         "runtime": {
           "bin/placeholder/0_Framework.dll": {}
         }
+      },
+      "DiscountManagement.Application.Contracts/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "0_Framework": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/DiscountManagement.Application.Contracts.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DiscountManagement.Application.Contracts.dll": {}
+        }
       }
     }
   },
@@ -537,11 +550,17 @@
       "type": "project",
       "path": "../0_Framework/0_Framework.csproj",
       "msbuildProject": "../0_Framework/0_Framework.csproj"
+    },
+    "DiscountManagement.Application.Contracts/1.0.0": {
+      "type": "project",
+      "path": "../DiscountManagement.Application.Contracts/DiscountManagement.Application.Contracts.csproj",
+      "msbuildProject": "../DiscountManagement.Application.Contracts/DiscountManagement.Application.Contracts.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "0_Framework >= 1.0.0"
+      "0_Framework >= 1.0.0",
+      "DiscountManagement.Application.Contracts >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -573,6 +592,9 @@
           "projectReferences": {
             "E:\\My-First-Real-Project\\0_Framework\\0_Framework.csproj": {
               "projectPath": "E:\\My-First-Real-Project\\0_Framework\\0_Framework.csproj"
+            },
+            "E:\\My-First-Real-Project\\DiscountManagement.Application.Contracts\\DiscountManagement.Application.Contracts.csproj": {
+              "projectPath": "E:\\My-First-Real-Project\\DiscountManagement.Application.Contracts\\DiscountManagement.Application.Contracts.csproj"
             }
           }
         }

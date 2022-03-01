@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
+﻿using _0_Framework.Application;
 using _0_Framework.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using ShopManagement.Application.Contracts.Product;
 using ShopManagement.Domain.ProductAgg;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ShopManagement.Infrastructure.EFCore.Repository
 {
@@ -61,7 +61,7 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
                     Code = x.Code,
                     Picture = x.Picture,
                     UnitPrice = x.UnitPrice,
-                    CreationDate = x.CreationDate.ToString(CultureInfo.InvariantCulture),
+                    CreationDate = x.CreationDate.ToFarsi(),
                     CategoryId = x.CategoryId,
                     Category = x.Category.Name,
                     IsInStock = x.IsInStock

@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
+﻿using _0_Framework.Application;
 using _0_Framework.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using ShopManagement.Application.Contracts.ProductCategory;
 using ShopManagement.Domain.ProductCategoryAgg;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ShopManagement.Infrastructure.EFCore.Repository
 {
@@ -55,7 +55,7 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
                     Id = x.Id,
                     Name = x.Name,
                     Picture = x.Picture,
-                    CreationDate = x.CreationDate.ToString(CultureInfo.InvariantCulture),
+                    CreationDate = x.CreationDate.ToFarsi(),
                     ProductsCount = x.Products.Count
                 });
 
