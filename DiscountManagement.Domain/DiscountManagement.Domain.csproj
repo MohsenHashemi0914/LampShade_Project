@@ -9,4 +9,8 @@
     <ProjectReference Include="..\DiscountManagement.Application.Contracts\DiscountManagement.Application.Contracts.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ColleagueDiscountAgg\" />
+  </ItemGroup>
+
 </Project>
