@@ -9,7 +9,7 @@ namespace DiscountManagement.Application.Contracts.CustomerDiscount
         [Range(1, long.MaxValue, ErrorMessage = ValidationMessages.IsRequired)]
         public long ProductId { get; set; }
 
-        [Required(ErrorMessage = ValidationMessages.IsRequired)]
+        [Range(1, 99, ErrorMessage = ValidationMessages.IsRequired)]
         public int DiscountRate { get; set; }
 
         [Required(ErrorMessage = ValidationMessages.IsRequired)]

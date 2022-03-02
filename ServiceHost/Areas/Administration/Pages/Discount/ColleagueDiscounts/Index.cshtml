@@ -1,16 +1,16 @@
 ﻿@page
-@model ServiceHost.Areas.Administration.Pages.Discount.CustomerDiscounts.IndexModel
+@model ServiceHost.Areas.Administration.Pages.Discount.ColleagueDiscounts.IndexModel
 
 @{
     Layout = "Shared/_AdminLayout";
-    ViewData["title"] = "مدیریت تخفیفات مشتریان";
+    ViewData["title"] = "مدیریت تخفیفات همکاران";
 }
 
 <div class="row">
     <div class="col-sm-12">
         <h4 class="page-title pull-right">@ViewData["title"]</h4>
         <p class="pull-left">
-            <a class="btn btn-success btn-lg" href="#showmodal=@Url.Page("./Index", "Create")">تعریف تخفیف مشتری</a>
+            <a class="btn btn-success btn-lg" href="#showmodal=@Url.Page("./Index", "Create")">تعریف تخفیف همکاری</a>
         </p>
     </div>
 </div>
@@ -19,19 +19,11 @@
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">جستجو در تخفیفات مشتریان</h3>
+                <h3 class="panel-title">جستجو در تخفیفات همکاران</h3>
                 <span class="text-danger">@Model.Message</span>
             </div>
             <div class="panel-body">
                 <form class="form-inline" role="form" method="get">
-                    <div class="form-group">
-                        <label class="sr-only" asp-for="SearchModel.StartDate"></label>
-                        <input class="form-control persianDateInput" asp-for="SearchModel.StartDate">
-                    </div>
-                    <div class="form-group">
-                        <label class="sr-only" asp-for="SearchModel.EndDate"></label>
-                        <input class="form-control persianDateInput" asp-for="SearchModel.EndDate">
-                    </div>
                     <div class="form-group">
                         <label class="sr-only" asp-for="SearchModel.ProductId"></label>
                         <select class="form-control" asp-for="SearchModel.ProductId" asp-items="Model.Products">
@@ -50,7 +42,7 @@
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">لیست تخفیفات مشتریان (@Model.CustomerDiscounts.Count)</h3>
+                <h3 class="panel-title">لیست تخفیفات همکاران (@Model.ColleagueDiscounts.Count)</h3>
             </div>
             <div class="panel-body">
                 <div class="row">
@@ -61,31 +53,46 @@
                                     <th>#</th>
                                     <th>محصول</th>
                                     <th>درصد تخفیف</th>
-                                    <th>تاریخ شروع</th>
-                                    <th>تاریخ پایان</th>
-                                    <th>علت تخقیف</th>
                                     <th>تاریخ تعریف</th>
+                                    <th>وضعیت</th>
                                     <th>عملیات</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @if (Model.CustomerDiscounts != null && Model.CustomerDiscounts.Any())
+                                @if (Model.ColleagueDiscounts != null && Model.ColleagueDiscounts.Any())
                                 {
-                                    @foreach (var item in Model.CustomerDiscounts)
+                                    @foreach (var item in Model.ColleagueDiscounts)
                                     {
                                         <tr>
                                             <td>@item.Id</td>
                                             <td>@item.Product</td>
                                             <td>@item.DiscountRate%</td>
-                                            <td>@item.StartDate</td>
-                                            <td>@item.EndDate</td>
-                                            <td>@item.Reason</td>
                                             <td>@item.CreationDate</td>
+                                            <td class="text-center">
+                                                @if (!item.IsRemoved)
+                                                {
+                                                    <i class="fa fa-check fa-3x text-success"></i>
+                                                }
+                                                else
+                                                {
+                                                    <i class="fa fa-remove fa-3x text-danger"></i>
+                                                }
+                                            </td>
                                             <td>
                                                 <a class="btn btn-warning btn-custom waves-effect waves-light m-b-5"
                                                    href="#showmodal=@Url.Page("./Index", "Edit", new { id = item.Id})">
                                                     <i class="fa fa-edit"></i> ویرایش
                                                 </a>
+                                                @if (!item.IsRemoved)
+                                                {
+                                                    <a class="btn btn-danger btn-custom waves-effect waves-light m-b-5" asp-page="./Index" asp-page-handler="Remove"
+                                                       asp-route-id="@item.Id">حدف</a>
+                                                }
+                                                else
+                                                {
+                                                    <a class="btn btn-success btn-custom waves-effect waves-light m-b-5" asp-page="./Index" asp-page-handler="Restore"
+                                                       asp-route-id="@item.Id">بازیابی</a>
+                                                }
                                             </td>
                                         </tr>
                                     }

@@ -365,3 +365,6 @@ E:\My-First-Real-Project\ServiceHost\bin\Debug\net5.0\DiscountManagement.Infrast
 E:\My-First-Real-Project\ServiceHost\obj\Debug\net5.0\Razor\Areas\Administration\Pages\Discount\CustomerDiscounts\Create.cshtml.g.cs
 E:\My-First-Real-Project\ServiceHost\obj\Debug\net5.0\Razor\Areas\Administration\Pages\Discount\CustomerDiscounts\Edit.cshtml.g.cs
 E:\My-First-Real-Project\ServiceHost\obj\Debug\net5.0\Razor\Areas\Administration\Pages\Discount\CustomerDiscounts\Index.cshtml.g.cs
+E:\My-First-Real-Project\ServiceHost\obj\Debug\net5.0\Razor\Areas\Administration\Pages\Discount\ColleagueDiscounts\Create.cshtml.g.cs
+E:\My-First-Real-Project\ServiceHost\obj\Debug\net5.0\Razor\Areas\Administration\Pages\Discount\ColleagueDiscounts\Edit.cshtml.g.cs
+E:\My-First-Real-Project\ServiceHost\obj\Debug\net5.0\Razor\Areas\Administration\Pages\Discount\ColleagueDiscounts\Index.cshtml.g.cs
