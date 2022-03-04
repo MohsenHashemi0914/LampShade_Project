@@ -368,3 +368,13 @@ E:\My-First-Real-Project\ServiceHost\obj\Debug\net5.0\Razor\Areas\Administration
 E:\My-First-Real-Project\ServiceHost\obj\Debug\net5.0\Razor\Areas\Administration\Pages\Discount\ColleagueDiscounts\Create.cshtml.g.cs
 E:\My-First-Real-Project\ServiceHost\obj\Debug\net5.0\Razor\Areas\Administration\Pages\Discount\ColleagueDiscounts\Edit.cshtml.g.cs
 E:\My-First-Real-Project\ServiceHost\obj\Debug\net5.0\Razor\Areas\Administration\Pages\Discount\ColleagueDiscounts\Index.cshtml.g.cs
+E:\My-First-Real-Project\ServiceHost\bin\Debug\net5.0\InventoryManagement.Application.Contracts.dll
+E:\My-First-Real-Project\ServiceHost\bin\Debug\net5.0\InventoryManagement.Application.dll
+E:\My-First-Real-Project\ServiceHost\bin\Debug\net5.0\InventoryManagement.Configuration.dll
+E:\My-First-Real-Project\ServiceHost\bin\Debug\net5.0\InventoryManagement.Domain.dll
+E:\My-First-Real-Project\ServiceHost\bin\Debug\net5.0\InventoryManagement.Infrastructure.EFCore.dll
+E:\My-First-Real-Project\ServiceHost\bin\Debug\net5.0\InventoryManagement.Configuration.pdb
+E:\My-First-Real-Project\ServiceHost\bin\Debug\net5.0\InventoryManagement.Application.pdb
+E:\My-First-Real-Project\ServiceHost\bin\Debug\net5.0\InventoryManagement.Application.Contracts.pdb
+E:\My-First-Real-Project\ServiceHost\bin\Debug\net5.0\InventoryManagement.Domain.pdb
+E:\My-First-Real-Project\ServiceHost\bin\Debug\net5.0\InventoryManagement.Infrastructure.EFCore.pdb

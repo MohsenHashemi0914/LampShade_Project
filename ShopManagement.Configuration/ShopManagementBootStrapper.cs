@@ -17,7 +17,7 @@ using ShopManagement.Infrastructure.EFCore.Repository;
 
 namespace ShopManagement.Configuration
 {
-    public class ShopManagementBootstrapper
+    public static class ShopManagementBootstrapper
     {
         public static void Configure(IServiceCollection services, string connectionString)
         {

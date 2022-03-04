@@ -1,0 +1,17 @@
+E:\My-First-Real-Project\InventoryManagement.Domain\bin\Debug\net5.0\InventoryManagement.Domain.deps.json
+E:\My-First-Real-Project\InventoryManagement.Domain\bin\Debug\net5.0\InventoryManagement.Domain.dll
+E:\My-First-Real-Project\InventoryManagement.Domain\bin\Debug\net5.0\ref\InventoryManagement.Domain.dll
+E:\My-First-Real-Project\InventoryManagement.Domain\bin\Debug\net5.0\InventoryManagement.Domain.pdb
+E:\My-First-Real-Project\InventoryManagement.Domain\bin\Debug\net5.0\0_Framework.dll
+E:\My-First-Real-Project\InventoryManagement.Domain\bin\Debug\net5.0\InventoryManagement.Application.Contracts.dll
+E:\My-First-Real-Project\InventoryManagement.Domain\bin\Debug\net5.0\0_Framework.pdb
+E:\My-First-Real-Project\InventoryManagement.Domain\bin\Debug\net5.0\InventoryManagement.Application.Contracts.pdb
+E:\My-First-Real-Project\InventoryManagement.Domain\obj\Debug\net5.0\InventoryManagement.Domain.csproj.AssemblyReference.cache
+E:\My-First-Real-Project\InventoryManagement.Domain\obj\Debug\net5.0\InventoryManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\My-First-Real-Project\InventoryManagement.Domain\obj\Debug\net5.0\InventoryManagement.Domain.AssemblyInfoInputs.cache
+E:\My-First-Real-Project\InventoryManagement.Domain\obj\Debug\net5.0\InventoryManagement.Domain.AssemblyInfo.cs
+E:\My-First-Real-Project\InventoryManagement.Domain\obj\Debug\net5.0\InventoryManagement.Domain.csproj.CoreCompileInputs.cache
+E:\My-First-Real-Project\InventoryManagement.Domain\obj\Debug\net5.0\InventoryManagement.Domain.csproj.CopyComplete
+E:\My-First-Real-Project\InventoryManagement.Domain\obj\Debug\net5.0\InventoryManagement.Domain.dll
+E:\My-First-Real-Project\InventoryManagement.Domain\obj\Debug\net5.0\ref\InventoryManagement.Domain.dll
+E:\My-First-Real-Project\InventoryManagement.Domain\obj\Debug\net5.0\InventoryManagement.Domain.pdb
