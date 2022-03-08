@@ -378,3 +378,9 @@ E:\My-First-Real-Project\ServiceHost\bin\Debug\net5.0\InventoryManagement.Applic
 E:\My-First-Real-Project\ServiceHost\bin\Debug\net5.0\InventoryManagement.Application.Contracts.pdb
 E:\My-First-Real-Project\ServiceHost\bin\Debug\net5.0\InventoryManagement.Domain.pdb
 E:\My-First-Real-Project\ServiceHost\bin\Debug\net5.0\InventoryManagement.Infrastructure.EFCore.pdb
+E:\My-First-Real-Project\ServiceHost\obj\Debug\net5.0\Razor\Areas\Administration\Pages\Inventory\Create.cshtml.g.cs
+E:\My-First-Real-Project\ServiceHost\obj\Debug\net5.0\Razor\Areas\Administration\Pages\Inventory\Edit.cshtml.g.cs
+E:\My-First-Real-Project\ServiceHost\obj\Debug\net5.0\Razor\Areas\Administration\Pages\Inventory\Index.cshtml.g.cs
+E:\My-First-Real-Project\ServiceHost\obj\Debug\net5.0\Razor\Areas\Administration\Pages\Inventory\Increase.cshtml.g.cs
+E:\My-First-Real-Project\ServiceHost\obj\Debug\net5.0\Razor\Areas\Administration\Pages\Inventory\Reduce.cshtml.g.cs
+E:\My-First-Real-Project\ServiceHost\obj\Debug\net5.0\Razor\Areas\Administration\Pages\Inventory\OperationLog.cshtml.g.cs

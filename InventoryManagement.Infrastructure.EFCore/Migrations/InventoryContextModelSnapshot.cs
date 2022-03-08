@@ -29,7 +29,7 @@ namespace InventoryManagement.Infrastructure.EFCore.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsInStock")
+                    b.Property<bool>("NotInStock")
                         .HasColumnType("bit");
 
                     b.Property<long>("ProductId")

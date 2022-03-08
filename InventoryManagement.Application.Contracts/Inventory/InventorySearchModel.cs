@@ -3,6 +3,6 @@
     public class InventorySearchModel
     {
         public long ProductId { get; set; }
-        public bool IsInStock { get; set; }
+        public bool NotInStock { get; set; }
     }
 }

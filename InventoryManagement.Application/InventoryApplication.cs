@@ -40,7 +40,7 @@ namespace InventoryManagement.Application
             if (inventory == null)
                 return operation.Failed(ApplicationMessages.RecordNotFound);
 
-            if (_inventoryRepository.IsExist(x => x.ProductId == command.ProductId))
+            if (_inventoryRepository.IsExist(x => x.ProductId == command.ProductId && x.Id != command.Id))
                 return operation.Failed(ApplicationMessages.DuplicatedRecord);
 
             inventory.Edit(command.ProductId, command.UnitPrice);
@@ -102,6 +102,11 @@ namespace InventoryManagement.Application
         public List<InventoryViewModel> Search(InventorySearchModel searchModel)
         {
             return _inventoryRepository.Search(searchModel);
+        }
+
+        public List<InventoryOperationViewModel> GetOperationLog(long inventoryId)
+        {
+            return _inventoryRepository.GetOperationLog(inventoryId);
         }
     }
 }
