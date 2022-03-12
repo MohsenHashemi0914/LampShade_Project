@@ -28,7 +28,6 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
                 Id = x.Id,
                 Name = x.Name,
                 Code = x.Code,
-                UnitPrice = x.UnitPrice,
                 ShortDescription = x.ShortDescription,
                 Description = x.Description,
                 Picture = x.Picture,
@@ -60,11 +59,9 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
                     Name = x.Name,
                     Code = x.Code,
                     Picture = x.Picture,
-                    UnitPrice = x.UnitPrice,
                     CreationDate = x.CreationDate.ToFarsi(),
                     CategoryId = x.CategoryId,
-                    Category = x.Category.Name,
-                    IsInStock = x.IsInStock
+                    Category = x.Category.Name
                 });
 
             if (!string.IsNullOrWhiteSpace(searchModel.Name))
