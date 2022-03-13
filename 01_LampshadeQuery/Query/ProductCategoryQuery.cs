@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using _0_Framework.Application;
 using _01_LampshadeQuery.Contracts.Product;
 using _01_LampshadeQuery.Contracts.ProductCategory;
+using InventoryManagement.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
 using ShopManagement.Domain.ProductAgg;
 using ShopManagement.Infrastructure.EFCore;
@@ -13,10 +15,12 @@ namespace _01_LampshadeQuery.Query
         #region Constructor
 
         private readonly ShopContext _shopContext;
+        private readonly InventoryContext _inventoryContext;
 
-        public ProductCategoryQuery(ShopContext shopContext)
+        public ProductCategoryQuery(ShopContext shopContext, InventoryContext inventoryContext)
         {
             _shopContext = shopContext;
+            _inventoryContext = inventoryContext;
         }
 
         #endregion
@@ -37,7 +41,10 @@ namespace _01_LampshadeQuery.Query
 
         public List<ProductCategoryQueryModel> GetProductCategoriesWithProducts()
         {
-            return _shopContext.ProductCategories
+            var inventory = _inventoryContext.Inventory.Select(x =>
+                new { x.ProductId, x.UnitPrice });
+
+            var categories = _shopContext.ProductCategories
                 .Include(x => x.Products)
                 .Select(x => new ProductCategoryQueryModel
                 {
@@ -48,7 +55,18 @@ namespace _01_LampshadeQuery.Query
                     PictureAlt = x.PictureAlt,
                     PictureTitle = x.PictureTitle,
                     Products = MapProducts(x.Products, x.Name)
-                }).ToList();
+                }).OrderByDescending(x => x.Id).ToList();
+
+            categories.ForEach(category =>
+            {
+                category.Products.ForEach(product =>
+                {
+                    product.Price = inventory.FirstOrDefault(x => 
+                        x.ProductId == product.Id)?.UnitPrice.ToMoney();
+                });
+            });
+
+            return categories;
         }
 
         #region Utilities
@@ -63,7 +81,7 @@ namespace _01_LampshadeQuery.Query
                 Category = categoryName,
                 Picture = x.Picture,
                 PictureAlt = x.PictureAlt,
-                PictureTitle = x.PictureTitle
+                PictureTitle = x.PictureTitle,
             }).OrderByDescending(x => x.Id).ToList();
         }
 

@@ -46,3 +46,9 @@ E:\My-First-Real-Project\ShopManagement.Configuration\obj\Debug\net5.0\ref\ShopM
 E:\My-First-Real-Project\ShopManagement.Configuration\obj\Debug\net5.0\ShopManagement.Configuration.pdb
 E:\My-First-Real-Project\ShopManagement.Configuration\bin\Debug\net5.0\01_LampshadeQuery.dll
 E:\My-First-Real-Project\ShopManagement.Configuration\bin\Debug\net5.0\01_LampshadeQuery.pdb
+E:\My-First-Real-Project\ShopManagement.Configuration\bin\Debug\net5.0\InventoryManagement.Application.Contracts.dll
+E:\My-First-Real-Project\ShopManagement.Configuration\bin\Debug\net5.0\InventoryManagement.Domain.dll
+E:\My-First-Real-Project\ShopManagement.Configuration\bin\Debug\net5.0\InventoryManagement.Infrastructure.EFCore.dll
+E:\My-First-Real-Project\ShopManagement.Configuration\bin\Debug\net5.0\InventoryManagement.Application.Contracts.pdb
+E:\My-First-Real-Project\ShopManagement.Configuration\bin\Debug\net5.0\InventoryManagement.Domain.pdb
+E:\My-First-Real-Project\ShopManagement.Configuration\bin\Debug\net5.0\InventoryManagement.Infrastructure.EFCore.pdb

@@ -29,7 +29,7 @@
                                 foreach (var category in Model)
                                 {
                                     <a class="nav-item nav-link @(category == Model.First() ? "active" : "")" id="product-tab-@category.Id" data-toggle="tab"
-                                       href="#product-series-1.@category.Id" role="tab" aria-selected="true">@category.Name</a>
+                                       href="#product-series-@category.Id" role="tab" aria-selected="true">@category.Name</a>
                                 }
                             }
                         </div>
@@ -74,14 +74,14 @@
                                                         <div class="single-grid-product">
                                                             <div class="single-grid-product__image">
                                                                 <a href="single-product.html">
-                                                                    <img src="~/ProductPictures/@category.Picture" title="@category.PictureTitle" class="img-fluid"
-                                                                         alt="@category.PictureAlt">
+                                                                    <img src="~/ProductPictures/@product.Picture" title="@product.PictureTitle" class="img-fluid"
+                                                                         alt="@product.PictureAlt">
                                                                 </a>
                                                             </div>
                                                             <div class="single-grid-product__content">
                                                                 <div class="single-grid-product__category-rating">
                                                                     <span class="category">
-                                                                        <a href="shop-left-sidebar.html">Furniture</a>
+                                                                        <a href="shop-left-sidebar.html">@product.Category</a>
                                                                     </span>
                                                                     <span class="rating">
                                                                         <i class="ion-android-star active"></i>
@@ -98,7 +98,7 @@
                                                                     </a>
                                                                 </h3>
                                                                 <p class="single-grid-product__price">
-                                                                    <span class="main-price">$120.00</span>
+                                                                    <span class="main-price">@product.Price تومان</span>
                                                                 </p>
                                                             </div>
                                                         </div>
