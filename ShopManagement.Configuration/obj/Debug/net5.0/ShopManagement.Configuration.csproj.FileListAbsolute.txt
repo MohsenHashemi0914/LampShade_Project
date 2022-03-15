@@ -52,3 +52,9 @@ E:\My-First-Real-Project\ShopManagement.Configuration\bin\Debug\net5.0\Inventory
 E:\My-First-Real-Project\ShopManagement.Configuration\bin\Debug\net5.0\InventoryManagement.Application.Contracts.pdb
 E:\My-First-Real-Project\ShopManagement.Configuration\bin\Debug\net5.0\InventoryManagement.Domain.pdb
 E:\My-First-Real-Project\ShopManagement.Configuration\bin\Debug\net5.0\InventoryManagement.Infrastructure.EFCore.pdb
+E:\My-First-Real-Project\ShopManagement.Configuration\bin\Debug\net5.0\DiscountManagement.Application.Contracts.dll
+E:\My-First-Real-Project\ShopManagement.Configuration\bin\Debug\net5.0\DiscountManagement.Domain.dll
+E:\My-First-Real-Project\ShopManagement.Configuration\bin\Debug\net5.0\DiscountManagement.Infrastructure.EFCore.dll
+E:\My-First-Real-Project\ShopManagement.Configuration\bin\Debug\net5.0\DiscountManagement.Application.Contracts.pdb
+E:\My-First-Real-Project\ShopManagement.Configuration\bin\Debug\net5.0\DiscountManagement.Domain.pdb
+E:\My-First-Real-Project\ShopManagement.Configuration\bin\Debug\net5.0\DiscountManagement.Infrastructure.EFCore.pdb
