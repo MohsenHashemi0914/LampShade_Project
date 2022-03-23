@@ -50,7 +50,7 @@ namespace _01_LampshadeQuery.Query
 
             var discounts = _discountContext.CustomerDiscounts
                 .Where(x => x.StartDate <= DateTime.Now && x.EndDate >= DateTime.Now)
-                .Select(x => new {x.ProductId, x.DiscountRate}).ToList();
+                .Select(x => new { x.ProductId, x.DiscountRate }).ToList();
 
             var categories = _shopContext.ProductCategories
                 .Include(x => x.Products)
@@ -69,10 +69,10 @@ namespace _01_LampshadeQuery.Query
             {
                 category.Products.ForEach(product =>
                 {
-                    var price = inventory.FirstOrDefault(x => 
+                    var price = inventory.FirstOrDefault(x =>
                         x.ProductId == product.Id)?.UnitPrice ?? 0;
 
-                    var discountRate = discounts.FirstOrDefault(x => 
+                    var discountRate = discounts.FirstOrDefault(x =>
                         x.ProductId == product.Id)?.DiscountRate ?? 0;
 
                     product.Price = price.ToMoney();
@@ -102,7 +102,7 @@ namespace _01_LampshadeQuery.Query
                 Category = categoryName,
                 Picture = x.Picture,
                 PictureAlt = x.PictureAlt,
-                PictureTitle = x.PictureTitle,
+                PictureTitle = x.PictureTitle
             }).OrderByDescending(x => x.Id).ToList();
         }
 
