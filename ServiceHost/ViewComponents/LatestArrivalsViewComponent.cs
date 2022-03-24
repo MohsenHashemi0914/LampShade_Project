@@ -15,7 +15,6 @@ namespace ServiceHost.ViewComponents
         }
 
         #endregion
-
         public IViewComponentResult Invoke()
         {
             var products = _productQuery.GetLatestArrivals();

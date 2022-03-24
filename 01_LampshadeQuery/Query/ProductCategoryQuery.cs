@@ -90,6 +90,55 @@ namespace _01_LampshadeQuery.Query
             return categories;
         }
 
+        public ProductCategoryQueryModel GetProductCategoryWithProductsBy(string slug)
+        {
+            var inventory = _inventoryContext.Inventory.Select(x =>
+                new { x.ProductId, x.UnitPrice });
+
+            var discounts = _discountContext.CustomerDiscounts
+                .Where(x => x.StartDate <= DateTime.Now && x.EndDate >= DateTime.Now)
+                .Select(x => new { x.ProductId, x.DiscountRate, x.EndDate }).ToList();
+
+            var category = _shopContext.ProductCategories
+                .Include(x => x.Products)
+                .Select(x => new ProductCategoryQueryModel
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Slug = x.Slug,
+                    Picture = x.Picture,
+                    PictureAlt = x.PictureAlt,
+                    PictureTitle = x.PictureTitle,
+                    Description = x.Description,
+                    MetaDescription = x.MetaDescription,
+                    KeyWords = x.KeyWords,
+                    Products = MapProducts(x.Products, x.Name)
+                }).FirstOrDefault(x => x.Slug == slug);
+
+                category.Products.ForEach(product =>
+                {
+                    var price = inventory.FirstOrDefault(x =>
+                        x.ProductId == product.Id)?.UnitPrice ?? 0;
+
+                    var discountRate = discounts.FirstOrDefault(x =>
+                        x.ProductId == product.Id)?.DiscountRate ?? 0;
+
+                    product.Price = price.ToMoney();
+                    product.DiscountRate = discountRate;
+                    product.HasDiscount = discountRate > 0;
+
+                    if (price > 0 && product.HasDiscount)
+                    {
+                        var discountAmount = Math.Round((price * discountRate) / 100);
+                        product.PriceWithDiscount = (price - discountAmount).ToMoney();
+                        product.DiscountExpireDate = discounts
+                        .FirstOrDefault(x => x.ProductId == product.Id).EndDate.ToDiscountFormat();
+                    }
+                });
+
+            return category;
+        }
+
         #region Utilities
 
         private static List<ProductQueryModel> MapProducts(List<Product> products, string categoryName)
