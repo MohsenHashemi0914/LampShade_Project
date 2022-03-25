@@ -387,3 +387,5 @@ E:\My-First-Real-Project\ServiceHost\obj\Debug\net5.0\Razor\Areas\Administration
 E:\My-First-Real-Project\ServiceHost\obj\Debug\net5.0\Razor\Pages\Shared\Components\ProductCategoryWithProducts\Default.cshtml.g.cs
 E:\My-First-Real-Project\ServiceHost\obj\Debug\net5.0\Razor\Pages\Shared\Components\LatestArrivals\Default.cshtml.g.cs
 E:\My-First-Real-Project\ServiceHost\obj\Debug\net5.0\Razor\Pages\ProductCategory.cshtml.g.cs
+E:\My-First-Real-Project\ServiceHost\obj\Debug\net5.0\Razor\Pages\Shared\Components\Footer\Default.cshtml.g.cs
+E:\My-First-Real-Project\ServiceHost\obj\Debug\net5.0\Razor\Pages\Shared\Components\Menu\Default.cshtml.g.cs
