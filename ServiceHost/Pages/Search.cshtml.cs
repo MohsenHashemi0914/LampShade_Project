@@ -23,6 +23,8 @@ namespace ServiceHost.Pages
         public void OnGet(string value)
         {
             Value = value;
+            if (string.IsNullOrWhiteSpace(value))
+                Value = "Â„Â „Õ’Ê·« ";
             Products = _productQuery.Search(value);
         }
     }
