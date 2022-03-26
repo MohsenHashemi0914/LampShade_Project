@@ -40,7 +40,7 @@ namespace _01_LampshadeQuery.Query
                     PictureAlt = x.PictureAlt,
                     PictureTitle = x.PictureTitle,
                     Slug = x.Slug
-                }).ToList();
+                }).AsNoTracking().ToList();
         }
 
         public List<ProductCategoryQueryModel> GetProductCategoriesWithProducts()
@@ -63,7 +63,7 @@ namespace _01_LampshadeQuery.Query
                     PictureAlt = x.PictureAlt,
                     PictureTitle = x.PictureTitle,
                     Products = MapProducts(x.Products, x.Name)
-                }).OrderByDescending(x => x.Id).ToList();
+                }).AsNoTracking().OrderByDescending(x => x.Id).ToList();
 
             categories.ForEach(category =>
             {
@@ -113,28 +113,28 @@ namespace _01_LampshadeQuery.Query
                     MetaDescription = x.MetaDescription,
                     KeyWords = x.KeyWords,
                     Products = MapProducts(x.Products, x.Name)
-                }).FirstOrDefault(x => x.Slug == slug);
+                }).AsNoTracking().FirstOrDefault(x => x.Slug == slug);
 
-                category.Products.ForEach(product =>
+            category.Products.ForEach(product =>
+            {
+                var price = inventory.FirstOrDefault(x =>
+                    x.ProductId == product.Id)?.UnitPrice ?? 0;
+
+                var discountRate = discounts.FirstOrDefault(x =>
+                    x.ProductId == product.Id)?.DiscountRate ?? 0;
+
+                product.Price = price.ToMoney();
+                product.DiscountRate = discountRate;
+                product.HasDiscount = discountRate > 0;
+
+                if (price > 0 && product.HasDiscount)
                 {
-                    var price = inventory.FirstOrDefault(x =>
-                        x.ProductId == product.Id)?.UnitPrice ?? 0;
-
-                    var discountRate = discounts.FirstOrDefault(x =>
-                        x.ProductId == product.Id)?.DiscountRate ?? 0;
-
-                    product.Price = price.ToMoney();
-                    product.DiscountRate = discountRate;
-                    product.HasDiscount = discountRate > 0;
-
-                    if (price > 0 && product.HasDiscount)
-                    {
-                        var discountAmount = Math.Round((price * discountRate) / 100);
-                        product.PriceWithDiscount = (price - discountAmount).ToMoney();
-                        product.DiscountExpireDate = discounts
-                        .FirstOrDefault(x => x.ProductId == product.Id).EndDate.ToDiscountFormat();
-                    }
-                });
+                    var discountAmount = Math.Round((price * discountRate) / 100);
+                    product.PriceWithDiscount = (price - discountAmount).ToMoney();
+                    product.DiscountExpireDate = discounts.FirstOrDefault(x =>
+                    x.ProductId == product.Id).EndDate.ToDiscountFormat();
+                }
+            });
 
             return category;
         }

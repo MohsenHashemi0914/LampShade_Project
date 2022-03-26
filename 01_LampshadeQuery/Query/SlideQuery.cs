@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using _01_LampshadeQuery.Contracts.Slide;
+using Microsoft.EntityFrameworkCore;
 using ShopManagement.Infrastructure.EFCore;
 
 namespace _01_LampshadeQuery.Query
@@ -32,7 +33,7 @@ namespace _01_LampshadeQuery.Query
                     Text = x.Text,
                     BtnText = x.BtnText,
                     Link = x.Link
-                }).ToList();
+                }).AsNoTracking().ToList();
         }
     }
 }

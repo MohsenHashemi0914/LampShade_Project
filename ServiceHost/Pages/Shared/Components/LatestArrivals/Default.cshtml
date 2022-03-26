@@ -49,9 +49,10 @@
                                                 }
                                                 <span class="new">جدید</span>
                                             </div>
+
                                             <a href="single-product.html">
-                                                <img src="~/ProductPictures/@product.Picture" class="img-fluid" 
-                                                     alt="@product.PictureAlt" title="@product.PictureTitle">
+                                                <img src="~/ProductPictures/@product.Picture" class="img-fluid"
+                                             alt="@product.PictureAlt" title="@product.PictureTitle">
                                             </a>
                                         </div>
                                         <div class="single-grid-product__content">
@@ -73,12 +74,8 @@
                                                 @if (product.HasDiscount)
                                                 {
                                                     <span class="discounted-price">@product.PriceWithDiscount تومان</span>
-                                                    <span class="main-price discounted">@product.Price تومان</span>
                                                 }
-                                                else
-                                                {
-                                                    <span class="main-price">@product.Price تومان</span>
-                                                }
+                                                <span class="main-price @(product.HasDiscount ? "discounted" : "")">@product.Price تومان</span>
                                             </p>
                                         </div>
                                     </div>

@@ -180,7 +180,6 @@ E:\My-First-Real-Project\ServiceHost\bin\Debug\net5.0\ServiceHost.deps.json
 E:\My-First-Real-Project\ServiceHost\bin\Debug\net5.0\ServiceHost.runtimeconfig.json
 E:\My-First-Real-Project\ServiceHost\bin\Debug\net5.0\ServiceHost.runtimeconfig.dev.json
 E:\My-First-Real-Project\ServiceHost\bin\Debug\net5.0\ServiceHost.dll
-E:\My-First-Real-Project\ServiceHost\bin\Debug\net5.0\ref\ServiceHost.dll
 E:\My-First-Real-Project\ServiceHost\bin\Debug\net5.0\ServiceHost.pdb
 E:\My-First-Real-Project\ServiceHost\bin\Debug\net5.0\ServiceHost.Views.dll
 E:\My-First-Real-Project\ServiceHost\bin\Debug\net5.0\ServiceHost.Views.pdb
@@ -389,3 +388,5 @@ E:\My-First-Real-Project\ServiceHost\obj\Debug\net5.0\Razor\Pages\Shared\Compone
 E:\My-First-Real-Project\ServiceHost\obj\Debug\net5.0\Razor\Pages\ProductCategory.cshtml.g.cs
 E:\My-First-Real-Project\ServiceHost\obj\Debug\net5.0\Razor\Pages\Shared\Components\Footer\Default.cshtml.g.cs
 E:\My-First-Real-Project\ServiceHost\obj\Debug\net5.0\Razor\Pages\Shared\Components\Menu\Default.cshtml.g.cs
+E:\My-First-Real-Project\ServiceHost\obj\Debug\net5.0\refint\ServiceHost.dll
+E:\My-First-Real-Project\ServiceHost\obj\Debug\net5.0\Razor\Pages\Search.cshtml.g.cs
