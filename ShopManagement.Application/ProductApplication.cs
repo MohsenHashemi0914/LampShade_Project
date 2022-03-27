@@ -9,15 +9,17 @@ namespace ShopManagement.Application
     {
         #region Constructor
 
+        private readonly IFileUploader _fileUploader;
         private readonly IProductRepository _productRepository;
 
-        public ProductApplication(IProductRepository productRepository)
+        public ProductApplication(IProductRepository productRepository, IFileUploader fileUploader)
         {
             _productRepository = productRepository;
+            _fileUploader = fileUploader;
         }
 
         #endregion
-        
+
         public OperationResult Create(CreateProduct command)
         {
             var operation = new OperationResult();
@@ -25,8 +27,10 @@ namespace ShopManagement.Application
                 return operation.Failed(ApplicationMessages.DuplicatedRecord);
 
             var slug = command.Slug.Slugify();
+            var path = $"{command.Slug}";
+            var fileName = _fileUploader.Upload(command.Picture, path);
             var product = new Product(command.Name, command.Code, command.ShortDescription,
-                command.Description, command.Picture, command.PictureAlt, command.PictureTitle, slug, command.KeyWords,
+                command.Description, fileName, command.PictureAlt, command.PictureTitle, slug, command.KeyWords,
                 command.MetaDescription, command.CategoryId);
 
             _productRepository.Add(product);
@@ -46,8 +50,10 @@ namespace ShopManagement.Application
                 return operation.Failed(ApplicationMessages.DuplicatedRecord);
 
             var slug = command.Slug.Slugify();
+            var path = $"{command.Slug}";
+            var fileName = _fileUploader.Upload(command.Picture, path);
             product.Edit(command.Name, command.Code, command.ShortDescription,
-                command.Description, command.Picture, command.PictureAlt, command.PictureTitle, slug, command.KeyWords,
+                command.Description, fileName, command.PictureAlt, command.PictureTitle, slug, command.KeyWords,
                 command.MetaDescription, command.CategoryId);
 
             _productRepository.SaveChanges();

@@ -30,4 +30,4 @@ E:\My-First-Real-Project\01_LampshadeQuery\bin\Debug\net5.0\DiscountManagement.I
 E:\My-First-Real-Project\01_LampshadeQuery\bin\Debug\net5.0\DiscountManagement.Infrastructure.EFCore.pdb
 E:\My-First-Real-Project\01_LampshadeQuery\bin\Debug\net5.0\DiscountManagement.Application.Contracts.pdb
 E:\My-First-Real-Project\01_LampshadeQuery\bin\Debug\net5.0\DiscountManagement.Domain.pdb
-E:\My-First-Real-Project\01_LampshadeQuery\obj\Debug\net5.0\refint\01_LampshadeQuery.dll
+E:\My-First-Real-Project\01_LampshadeQuery\bin\Debug\net5.0\ref\01_LampshadeQuery.dll
