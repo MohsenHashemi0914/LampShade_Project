@@ -25,9 +25,9 @@ namespace ShopManagement.Domain.ProductAgg
         {
         }
 
-        public Product(string name, string code, 
+        public Product(string name, string code,
             string shortDescription, string description, string picture,
-            string pictureAlt, string pictureTitle, string slug, string keyWords, 
+            string pictureAlt, string pictureTitle, string slug, string keyWords,
             string metaDescription, long categoryId)
         {
             Name = name;
@@ -44,7 +44,7 @@ namespace ShopManagement.Domain.ProductAgg
             ProductPictures = new List<ProductPicture>();
         }
 
-        public void Edit(string name, string code, 
+        public void Edit(string name, string code,
             string shortDescription, string description, string picture,
             string pictureAlt, string pictureTitle, string slug, string keyWords,
             string metaDescription, long categoryId)
@@ -53,7 +53,10 @@ namespace ShopManagement.Domain.ProductAgg
             Code = code;
             ShortDescription = shortDescription;
             Description = description;
-            Picture = picture;
+
+            if (!string.IsNullOrWhiteSpace(picture))
+                Picture = picture;
+
             PictureAlt = pictureAlt;
             PictureTitle = pictureTitle;
             Slug = slug;
