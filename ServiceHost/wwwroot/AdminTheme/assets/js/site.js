@@ -197,24 +197,26 @@ jQuery.validator.unobtrusive.adapters.addBool("maxFileSize");
 //jQuery.validator.addMethod("fileExtensionLimit",
 //    function (value, element, params) {
 
-//        var extensions = [".jpeg", ".jpg", ".png"];
-
-//        if (!extensions.includes(element.files[0].format))
+//        var extensions = ["jpeg", "jpg", "png"];
+//        var fileExtension = element.files[0].substr((file.lastIndexOf('.') + 1));
+//        debugger
+//        if (!extensions.includes(fileExtension))
 //            return false;
 //        else
 //            return true;
 //    });
 //jQuery.validator.unobtrusive.adapters.addBool("fileExtensionLimit");
 
-//jQuery.validator.addMethod("maxFileSize",
-//    function (value, element, params) {
-//        var size = element.files[0].size;
-//        var maxSize = 3 * 1024 * 1024;
-//        debugger;
-//        if (size > maxSize)
-//            return false;
-//        else {
-//            return true;
-//        }
-//    });
-//jQuery.validator.unobtrusive.adapters.addBool("maxFileSize");
+//function fileExtensionLimit() {
+//    var allowedFiles = [".Jpeg", ".jpg", ".png"];
+//    var fileUpload = document.getElementById("fileUpload");
+//    var lblError = document.getElementById("lblError");
+//    var regex = new RegExp("([a-zA-Z0-9\s_\\.\-:])+(" + allowedFiles.join('|') + ")$");
+//    if (!regex.test(fileUpload.value.toLowerCase())) {
+//        lblError.innerHTML = "فایل میتواند فقط دارای فرمت های: <b>" + allowedFiles.join(', ') + "</b> باشد .";
+//        return false;
+//    }
+//    lblError.innerHTML = "";
+//    return true;
+//}
+//jQuery.validator.unobtrusive.adapters.addBool("fileExtensionLimit");

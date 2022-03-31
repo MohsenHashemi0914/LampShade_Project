@@ -45,7 +45,7 @@
                                         <tr>
                                             <td>@item.Id</td>
                                             <td>
-                                                <img src="~/Theme/assets/img/hero-slider/@item.Picture" style="width: 70px; height: 70px" />
+                                                <img src="~/ProductPictures/@item.Picture" style="width: 70px; height: 70px" />
                                             </td>
                                             <td>@item.Heading</td>
                                             <td>@item.Title</td>
@@ -61,18 +61,18 @@
                                             </td>
                                             <td>@item.CreationDate</td>
                                             <td>
-                                                <a class="btn btn-warning btn-custom waves-effect waves-light m-b-5"
+                                                <a class="btn btn-warning waves-effect waves-light m-b-5"
                                                    href="#showmodal=@Url.Page("./Index", "Edit", new { id = item.Id})">
                                                     <i class="fa fa-edit"></i> ویرایش
                                                 </a>
                                                 @if (!item.IsRemoved)
                                                 {
-                                                    <a class="btn btn-danger btn-custom waves-effect waves-light m-b-5" asp-page="./Index" asp-page-handler="Remove"
+                                                    <a class="btn btn-danger waves-effect waves-light m-b-5" asp-page="./Index" asp-page-handler="Remove"
                                                        asp-route-id="@item.Id">حدف</a>
                                                 }
                                                 else
                                                 {
-                                                    <a class="btn btn-success btn-custom waves-effect waves-light m-b-5" asp-page="./Index" asp-page-handler="Restore"
+                                                    <a class="btn btn-success waves-effect waves-light m-b-5" asp-page="./Index" asp-page-handler="Restore"
                                                        asp-route-id="@item.Id">بازیابی</a>
                                                 }
                                             </td>
