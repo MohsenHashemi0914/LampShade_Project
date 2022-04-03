@@ -17,7 +17,6 @@ E:\My-First-Real-Project\LampShade\ShopManagement.Domain\bin\Debug\net5.0\ShopMa
 E:\My-First-Real-Project\LampShade\ShopManagement.Domain\bin\Debug\net5.0\ShopManagement.Application.Contracts.pdb
 E:\My-First-Real-Project\ShopManagement.Domain\bin\Debug\net5.0\ShopManagement.Domain.deps.json
 E:\My-First-Real-Project\ShopManagement.Domain\bin\Debug\net5.0\ShopManagement.Domain.dll
-E:\My-First-Real-Project\ShopManagement.Domain\bin\Debug\net5.0\ref\ShopManagement.Domain.dll
 E:\My-First-Real-Project\ShopManagement.Domain\bin\Debug\net5.0\ShopManagement.Domain.pdb
 E:\My-First-Real-Project\ShopManagement.Domain\bin\Debug\net5.0\0_Framework.dll
 E:\My-First-Real-Project\ShopManagement.Domain\bin\Debug\net5.0\ShopManagement.Application.Contracts.dll
@@ -32,3 +31,4 @@ E:\My-First-Real-Project\ShopManagement.Domain\obj\Debug\net5.0\ShopManagement.D
 E:\My-First-Real-Project\ShopManagement.Domain\obj\Debug\net5.0\ShopManagement.Domain.dll
 E:\My-First-Real-Project\ShopManagement.Domain\obj\Debug\net5.0\ref\ShopManagement.Domain.dll
 E:\My-First-Real-Project\ShopManagement.Domain\obj\Debug\net5.0\ShopManagement.Domain.pdb
+E:\My-First-Real-Project\ShopManagement.Domain\obj\Debug\net5.0\refint\ShopManagement.Domain.dll

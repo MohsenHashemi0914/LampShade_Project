@@ -19,7 +19,6 @@ E:\My-First-Real-Project\LampShade\ShopManagement.Application\obj\Debug\net5.0\r
 E:\My-First-Real-Project\LampShade\ShopManagement.Application\obj\Debug\net5.0\ShopManagement.Application.pdb
 E:\My-First-Real-Project\ShopManagement.Application\bin\Debug\net5.0\ShopManagement.Application.deps.json
 E:\My-First-Real-Project\ShopManagement.Application\bin\Debug\net5.0\ShopManagement.Application.dll
-E:\My-First-Real-Project\ShopManagement.Application\bin\Debug\net5.0\ref\ShopManagement.Application.dll
 E:\My-First-Real-Project\ShopManagement.Application\bin\Debug\net5.0\ShopManagement.Application.pdb
 E:\My-First-Real-Project\ShopManagement.Application\bin\Debug\net5.0\0_Framework.dll
 E:\My-First-Real-Project\ShopManagement.Application\bin\Debug\net5.0\ShopManagement.Application.Contracts.dll
@@ -36,3 +35,4 @@ E:\My-First-Real-Project\ShopManagement.Application\obj\Debug\net5.0\ShopManagem
 E:\My-First-Real-Project\ShopManagement.Application\obj\Debug\net5.0\ShopManagement.Application.dll
 E:\My-First-Real-Project\ShopManagement.Application\obj\Debug\net5.0\ref\ShopManagement.Application.dll
 E:\My-First-Real-Project\ShopManagement.Application\obj\Debug\net5.0\ShopManagement.Application.pdb
+E:\My-First-Real-Project\ShopManagement.Application\obj\Debug\net5.0\refint\ShopManagement.Application.dll

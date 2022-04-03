@@ -15,7 +15,6 @@ E:\My-First-Real-Project\LampShade\ShopManagement.Application.Contracts\obj\Debu
 E:\My-First-Real-Project\LampShade\ShopManagement.Application.Contracts\obj\Debug\net5.0\ShopManagement.Application.Contracts.pdb
 E:\My-First-Real-Project\ShopManagement.Application.Contracts\bin\Debug\net5.0\ShopManagement.Application.Contracts.deps.json
 E:\My-First-Real-Project\ShopManagement.Application.Contracts\bin\Debug\net5.0\ShopManagement.Application.Contracts.dll
-E:\My-First-Real-Project\ShopManagement.Application.Contracts\bin\Debug\net5.0\ref\ShopManagement.Application.Contracts.dll
 E:\My-First-Real-Project\ShopManagement.Application.Contracts\bin\Debug\net5.0\ShopManagement.Application.Contracts.pdb
 E:\My-First-Real-Project\ShopManagement.Application.Contracts\bin\Debug\net5.0\0_Framework.dll
 E:\My-First-Real-Project\ShopManagement.Application.Contracts\bin\Debug\net5.0\0_Framework.pdb
@@ -28,3 +27,4 @@ E:\My-First-Real-Project\ShopManagement.Application.Contracts\obj\Debug\net5.0\S
 E:\My-First-Real-Project\ShopManagement.Application.Contracts\obj\Debug\net5.0\ShopManagement.Application.Contracts.dll
 E:\My-First-Real-Project\ShopManagement.Application.Contracts\obj\Debug\net5.0\ref\ShopManagement.Application.Contracts.dll
 E:\My-First-Real-Project\ShopManagement.Application.Contracts\obj\Debug\net5.0\ShopManagement.Application.Contracts.pdb
+E:\My-First-Real-Project\ShopManagement.Application.Contracts\obj\Debug\net5.0\refint\ShopManagement.Application.Contracts.dll

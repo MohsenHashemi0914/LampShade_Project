@@ -57,4 +57,4 @@ E:\My-First-Real-Project\ShopManagement.Configuration\bin\Debug\net5.0\DiscountM
 E:\My-First-Real-Project\ShopManagement.Configuration\bin\Debug\net5.0\DiscountManagement.Application.Contracts.pdb
 E:\My-First-Real-Project\ShopManagement.Configuration\bin\Debug\net5.0\DiscountManagement.Domain.pdb
 E:\My-First-Real-Project\ShopManagement.Configuration\bin\Debug\net5.0\DiscountManagement.Infrastructure.EFCore.pdb
-E:\My-First-Real-Project\ShopManagement.Configuration\bin\Debug\net5.0\ref\ShopManagement.Configuration.dll
+E:\My-First-Real-Project\ShopManagement.Configuration\obj\Debug\net5.0\refint\ShopManagement.Configuration.dll

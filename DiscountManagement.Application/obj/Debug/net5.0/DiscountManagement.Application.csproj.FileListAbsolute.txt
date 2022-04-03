@@ -1,6 +1,5 @@
 E:\My-First-Real-Project\DiscountManagement.Application\bin\Debug\net5.0\DiscountManagement.Application.deps.json
 E:\My-First-Real-Project\DiscountManagement.Application\bin\Debug\net5.0\DiscountManagement.Application.dll
-E:\My-First-Real-Project\DiscountManagement.Application\bin\Debug\net5.0\ref\DiscountManagement.Application.dll
 E:\My-First-Real-Project\DiscountManagement.Application\bin\Debug\net5.0\DiscountManagement.Application.pdb
 E:\My-First-Real-Project\DiscountManagement.Application\bin\Debug\net5.0\0_Framework.dll
 E:\My-First-Real-Project\DiscountManagement.Application\bin\Debug\net5.0\DiscountManagement.Application.Contracts.dll
@@ -17,3 +16,4 @@ E:\My-First-Real-Project\DiscountManagement.Application\obj\Debug\net5.0\Discoun
 E:\My-First-Real-Project\DiscountManagement.Application\obj\Debug\net5.0\DiscountManagement.Application.dll
 E:\My-First-Real-Project\DiscountManagement.Application\obj\Debug\net5.0\ref\DiscountManagement.Application.dll
 E:\My-First-Real-Project\DiscountManagement.Application\obj\Debug\net5.0\DiscountManagement.Application.pdb
+E:\My-First-Real-Project\DiscountManagement.Application\obj\Debug\net5.0\refint\DiscountManagement.Application.dll

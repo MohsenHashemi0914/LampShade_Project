@@ -24,7 +24,6 @@ E:\My-First-Real-Project\ShopManagement.Infrastructure.EFCore\bin\Debug\net5.0\S
 E:\My-First-Real-Project\ShopManagement.Infrastructure.EFCore\bin\Debug\net5.0\ShopManagement.Infrastructure.EFCore.runtimeconfig.json
 E:\My-First-Real-Project\ShopManagement.Infrastructure.EFCore\bin\Debug\net5.0\ShopManagement.Infrastructure.EFCore.runtimeconfig.dev.json
 E:\My-First-Real-Project\ShopManagement.Infrastructure.EFCore\bin\Debug\net5.0\ShopManagement.Infrastructure.EFCore.dll
-E:\My-First-Real-Project\ShopManagement.Infrastructure.EFCore\bin\Debug\net5.0\ref\ShopManagement.Infrastructure.EFCore.dll
 E:\My-First-Real-Project\ShopManagement.Infrastructure.EFCore\bin\Debug\net5.0\ShopManagement.Infrastructure.EFCore.pdb
 E:\My-First-Real-Project\ShopManagement.Infrastructure.EFCore\bin\Debug\net5.0\0_Framework.dll
 E:\My-First-Real-Project\ShopManagement.Infrastructure.EFCore\bin\Debug\net5.0\ShopManagement.Application.Contracts.dll
@@ -42,3 +41,4 @@ E:\My-First-Real-Project\ShopManagement.Infrastructure.EFCore\obj\Debug\net5.0\S
 E:\My-First-Real-Project\ShopManagement.Infrastructure.EFCore\obj\Debug\net5.0\ref\ShopManagement.Infrastructure.EFCore.dll
 E:\My-First-Real-Project\ShopManagement.Infrastructure.EFCore\obj\Debug\net5.0\ShopManagement.Infrastructure.EFCore.pdb
 E:\My-First-Real-Project\ShopManagement.Infrastructure.EFCore\obj\Debug\net5.0\ShopManagement.Infrastructure.EFCore.genruntimeconfig.cache
+E:\My-First-Real-Project\ShopManagement.Infrastructure.EFCore\obj\Debug\net5.0\refint\ShopManagement.Infrastructure.EFCore.dll

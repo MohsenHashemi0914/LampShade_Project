@@ -12,7 +12,6 @@ E:\My-First-Real-Project\LampShade\0_Framework\obj\Debug\net5.0\0_Framework.pdb
 E:\My-First-Real-Project\LampShade\0_Framework\obj\Debug\net5.0\0_Framework.csproj.AssemblyReference.cache
 E:\My-First-Real-Project\0_Framework\bin\Debug\net5.0\0_Framework.deps.json
 E:\My-First-Real-Project\0_Framework\bin\Debug\net5.0\0_Framework.dll
-E:\My-First-Real-Project\0_Framework\bin\Debug\net5.0\ref\0_Framework.dll
 E:\My-First-Real-Project\0_Framework\bin\Debug\net5.0\0_Framework.pdb
 E:\My-First-Real-Project\0_Framework\obj\Debug\net5.0\0_Framework.csproj.AssemblyReference.cache
 E:\My-First-Real-Project\0_Framework\obj\Debug\net5.0\0_Framework.GeneratedMSBuildEditorConfig.editorconfig
@@ -22,3 +21,4 @@ E:\My-First-Real-Project\0_Framework\obj\Debug\net5.0\0_Framework.csproj.CoreCom
 E:\My-First-Real-Project\0_Framework\obj\Debug\net5.0\0_Framework.dll
 E:\My-First-Real-Project\0_Framework\obj\Debug\net5.0\ref\0_Framework.dll
 E:\My-First-Real-Project\0_Framework\obj\Debug\net5.0\0_Framework.pdb
+E:\My-First-Real-Project\0_Framework\obj\Debug\net5.0\refint\0_Framework.dll

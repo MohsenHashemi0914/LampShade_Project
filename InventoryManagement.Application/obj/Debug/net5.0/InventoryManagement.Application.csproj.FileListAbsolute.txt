@@ -1,6 +1,5 @@
 E:\My-First-Real-Project\InventoryManagement.Application\bin\Debug\net5.0\InventoryManagement.Application.deps.json
 E:\My-First-Real-Project\InventoryManagement.Application\bin\Debug\net5.0\InventoryManagement.Application.dll
-E:\My-First-Real-Project\InventoryManagement.Application\bin\Debug\net5.0\ref\InventoryManagement.Application.dll
 E:\My-First-Real-Project\InventoryManagement.Application\bin\Debug\net5.0\InventoryManagement.Application.pdb
 E:\My-First-Real-Project\InventoryManagement.Application\bin\Debug\net5.0\0_Framework.dll
 E:\My-First-Real-Project\InventoryManagement.Application\bin\Debug\net5.0\InventoryManagement.Application.Contracts.dll
@@ -17,3 +16,4 @@ E:\My-First-Real-Project\InventoryManagement.Application\obj\Debug\net5.0\Invent
 E:\My-First-Real-Project\InventoryManagement.Application\obj\Debug\net5.0\InventoryManagement.Application.dll
 E:\My-First-Real-Project\InventoryManagement.Application\obj\Debug\net5.0\ref\InventoryManagement.Application.dll
 E:\My-First-Real-Project\InventoryManagement.Application\obj\Debug\net5.0\InventoryManagement.Application.pdb
+E:\My-First-Real-Project\InventoryManagement.Application\obj\Debug\net5.0\refint\InventoryManagement.Application.dll
