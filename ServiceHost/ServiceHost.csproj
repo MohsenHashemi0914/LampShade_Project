@@ -4,10 +4,6 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Content Remove="Pages\Product.cshtml" />
-  </ItemGroup>
-
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.13">
 			<PrivateAssets>all</PrivateAssets>
@@ -25,18 +21,6 @@
   <ItemGroup>
     <Folder Include="wwwroot\ProductPictures\میز\آباژور-رومیزی\" />
     <Folder Include="wwwroot\Theme\assets\img\products\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Pages\Product.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="Pages\Product.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Pages\Product.cshtml" />
   </ItemGroup>
 
 </Project>

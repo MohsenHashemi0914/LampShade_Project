@@ -6,6 +6,7 @@ using _01_LampshadeQuery.Contracts.Product;
 using DiscountManagement.Infrastructure.EFCore;
 using InventoryManagement.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
+using ShopManagement.Domain.ProductPictureAgg;
 using ShopManagement.Infrastructure.EFCore;
 
 namespace _01_LampshadeQuery.Query
@@ -38,6 +39,7 @@ namespace _01_LampshadeQuery.Query
 
             var product = _shopContext.Products
                 .Include(x => x.Category)
+                .Include(x => x.ProductPictures)
                 .Select(x => new ProductQueryModel
                 {
                     Id = x.Id,
@@ -52,7 +54,8 @@ namespace _01_LampshadeQuery.Query
                     ShortDescription = x.ShortDescription,
                     Description = x.Description,
                     KeyWords = x.KeyWords,
-                    MetaDescription = x.MetaDescription
+                    MetaDescription = x.MetaDescription,
+                    Pictures = MapProductPictures(x.ProductPictures)
                 }).AsNoTracking().FirstOrDefault(x => x.Slug == slug);
 
             if (product == null)
@@ -178,5 +181,22 @@ namespace _01_LampshadeQuery.Query
 
             return products;
         }
+
+        #region Utilities
+
+        private static List<ProductPictureQueryModel> MapProductPictures(List<ProductPicture> pictures)
+        {
+            return pictures.Where(x => !x.IsRemoved)
+                .Select(x => new ProductPictureQueryModel
+                {
+                    ProductId = x.ProductId,
+                    IsRemoved = x.IsRemoved,
+                    Picture = x.Picture,
+                    PictureAlt = x.PictureAlt,
+                    PictureTitle = x.PictureTitle
+                }).ToList();
+        }
+
+        #endregion
     }
 }
