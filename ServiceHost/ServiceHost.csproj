@@ -23,4 +23,8 @@
     <Folder Include="wwwroot\Theme\assets\img\products\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="Pages\Product.cshtml" />
+  </ItemGroup>
+
 </Project>
