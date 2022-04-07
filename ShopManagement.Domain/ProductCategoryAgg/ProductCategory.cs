@@ -33,7 +33,7 @@ namespace ShopManagement.Domain.ProductCategoryAgg
             KeyWords = keyWords;
             MetaDescription = metaDescription;
             Slug = slug;
-            Products = new List<Product>();
+            Products = new();
         }
 
         public void Edit(string name, string description, string picture,
