@@ -23,6 +23,7 @@ namespace _01_LampshadeQuery.Contracts.Product
         public string KeyWords { get; set; }
         public string MetaDescription { get; set; }
         public bool IsInStock { get; set; }
+        public List<CommentQueryModel> Comments { get; set; }
         public List<ProductPictureQueryModel> Pictures { get; set; }
     }
 }

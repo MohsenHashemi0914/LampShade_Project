@@ -94,14 +94,14 @@
                                                     @if (!item.IsConfirmed)
                                                     {
                                                         <a class="btn btn-success waves-effect waves-light m-b-5"
-                                                        asp-page="./Index" asp-page-handler="Remove"
+                                                        asp-page="./Index" asp-page-handler="Confirm"
                                                         asp-route-id="@item.Id">تایید</a>
                                                     }
                                                 }
                                                 else
                                                 {
                                                     <a class="btn btn-success waves-effect waves-light m-b-5" 
-                                                    asp-page="./Index" asp-page-handler="Remove"
+                                                    asp-page="./Index" asp-page-handler="Confirm"
                                                     asp-route-id="@item.Id">تایید</a>
                                                 }
                                             </td>
