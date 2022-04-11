@@ -47,7 +47,7 @@ namespace BlogManagement.Infrastructure.EFCore.Repository
             if(!string.IsNullOrWhiteSpace(searchModel.Name))
                 query = query.Where(x => x.Name.Contains(searchModel.Name));
 
-            return query.OrderBy(x => x.ShowOrder).ToList();
+            return query.OrderByDescending(x => x.ShowOrder).ToList();
         }
     }
 }
