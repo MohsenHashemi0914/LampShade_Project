@@ -1,19 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\0_Framework\0_Framework.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\0_Framework\0_Framework.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Product\" />
-  </ItemGroup>
+	<ItemGroup>
+		<Folder Include="Product\" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.15" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.15" />
+	</ItemGroup>
 
 </Project>
