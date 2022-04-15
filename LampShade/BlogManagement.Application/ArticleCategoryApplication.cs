@@ -28,7 +28,8 @@ namespace BlogManagement.Application
             var slug = command.Slug.Slugify();
             var fileName = _fileUploader.Upload(command.Picture, slug);
 
-            var articleCategory = new ArticleCategory(command.Name, fileName, command.Description,
+            var articleCategory = new ArticleCategory(command.Name, fileName, command.PictureAlt, 
+                command.PictureTitle, command.Description,
                 command.ShowOrder, slug, command.Keywords,
                 command.MetaDescription, command.CanonicalAddress);
 
@@ -51,7 +52,8 @@ namespace BlogManagement.Application
             var slug = command.Slug.Slugify();
             var fileName = _fileUploader.Upload(command.Picture, slug);
 
-            articleCategory.Edit(command.Name, fileName, command.Description,
+            articleCategory.Edit(command.Name, fileName, command.PictureAlt,
+                command.PictureTitle, command.Description,
                 command.ShowOrder, slug, command.Keywords,
                 command.MetaDescription, command.CanonicalAddress);
 

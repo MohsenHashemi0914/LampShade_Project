@@ -1,4 +1,5 @@
-﻿using _0_Framework.Infrastructure;
+﻿using _0_Framework.Application;
+using _0_Framework.Infrastructure;
 using BlogManagement.Application.Contracts.ArticleCategory;
 using BlogManagement.Domain.ArticleCategoryAgg;
 
@@ -23,6 +24,8 @@ namespace BlogManagement.Infrastructure.EFCore.Repository
             {
                 Id = x.Id,
                 Name = x.Name,
+                PictureAlt = x.PictureAlt,
+                PictureTitle = x.PictureTitle,
                 Description = x.Description,
                 ShowOrder = x.ShowOrder,
                 Slug = x.Slug,
@@ -37,17 +40,34 @@ namespace BlogManagement.Infrastructure.EFCore.Repository
             var query = _context.ArticleCategories
                 .Select(x => new ArticleCategoryViewModel
                 {
-                    Id =x.Id,   
-                    Name=x.Name,
+                    Id = x.Id,
+                    Name = x.Name,
                     Picture = x.Picture,
                     Description = x.Description,
-                    ShowOrder=x.ShowOrder
+                    ShowOrder = x.ShowOrder,
+                    ArticlesCount = (short)x.Articles.Count(),
+                    CreationDate = x.CreationDate.ToFarsi()
                 });
 
-            if(!string.IsNullOrWhiteSpace(searchModel.Name))
+            if (!string.IsNullOrWhiteSpace(searchModel.Name))
                 query = query.Where(x => x.Name.Contains(searchModel.Name));
 
             return query.OrderByDescending(x => x.ShowOrder).ToList();
+        }
+
+        public List<ArticleCategoryViewModel> GetCategories()
+        {
+            return _context.ArticleCategories
+                .Select(x => new ArticleCategoryViewModel
+                {
+                    Id = x.Id,
+                    Name = x.Name
+                }).ToList();
+        }
+
+        public string GetSlugBy(long id)
+        {
+            return _context.ArticleCategories.Find(id)?.Slug;
         }
     }
 }
