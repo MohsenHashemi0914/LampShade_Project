@@ -21,7 +21,7 @@ namespace BlogManagement.Application.Contracts.ArticleCategory
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string Description { get; set; }
 
-        [Required(ErrorMessage = ValidationMessages.IsRequired)]
+        [Range(1, byte.MaxValue ,ErrorMessage = ValidationMessages.IsRequired)]
         public byte ShowOrder { get; set; }
 
         [Required(ErrorMessage = ValidationMessages.IsRequired)]

@@ -9,5 +9,6 @@
         public long CategoryId { get; set; }
         public string Category { get; set; }
         public string ShortDescription { get; set; }
+        public string CreationDate { get; set; }
     }
 }

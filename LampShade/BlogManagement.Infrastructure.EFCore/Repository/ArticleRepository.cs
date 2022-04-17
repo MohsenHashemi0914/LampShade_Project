@@ -31,7 +31,7 @@ namespace BlogManagement.Infrastructure.EFCore.Repository
                 {
                     Id = id,
                     Title = x.Title,
-                    Descriptioin = x.Description,
+                    Description = x.Description,
                     ShortDescription = x.ShortDescription,
                     PictureAlt = x.PictureAlt,
                     PictureTitle = x.PictureTitle,
@@ -55,7 +55,8 @@ namespace BlogManagement.Infrastructure.EFCore.Repository
                     PublishDate = x.PublishDate.ToFarsi(),
                     Picture = x.Picture,
                     Category = x.Category.Name,
-                    CategoryId = x.CategoryId
+                    CategoryId = x.CategoryId,
+                    CreationDate = x.CreationDate.ToFarsi()
                 });
 
             if (!string.IsNullOrWhiteSpace(searchModel.Title))
