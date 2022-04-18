@@ -18,7 +18,7 @@ namespace BlogManagement.Application.Contracts.Article
         public string PublishDate { get; set; }
 
         [MaxFileSize(3 * 1024 * 1024, ErrorMessage = ValidationMessages.MaxFileSize)]
-        public IFormFile Picture { get; set; }
+        public IFormFile? Picture { get; set; }
 
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string PictureAlt { get; set; }
@@ -35,7 +35,7 @@ namespace BlogManagement.Application.Contracts.Article
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string MetaDescription { get; set; }
 
-        public string CanonicalAddress { get; set; }
+        public string? CanonicalAddress { get; set; }
 
         [Range(1, long.MaxValue, ErrorMessage = ValidationMessages.IsRequired)]
         public long CategoryId { get; set; }
