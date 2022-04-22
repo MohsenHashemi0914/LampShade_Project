@@ -18,15 +18,13 @@ namespace _01_LampshadeQuery.Query
 
         #endregion
 
-        public List<ArticleQueryModel> GetLatestArticles()
+        public ArticleQueryModel GetDetails(string slug)
         {
             return _blogContext.Articles
                 .Include(x => x.Category)
                 .Where(x => x.PublishDate <= DateTime.Now)
                 .Select(x => new ArticleQueryModel
                 {
-                    Id = x.Id,
-                    CategoryId = x.CategoryId,
                     Category = x.Category.Name,
                     CategorySlug = x.Category.Slug,
                     Slug = x.Slug,
@@ -39,6 +37,24 @@ namespace _01_LampshadeQuery.Query
                     Keywords = x.Keywords,
                     PublishDate = x.PublishDate.ToFarsi(),
                     Description = x.Description,
+                    ShortDescription = x.ShortDescription
+                }).FirstOrDefault(x => x.Slug == slug);
+        }
+
+        public List<ArticleQueryModel> GetLatestArticles()
+        {
+            return _blogContext.Articles
+                .Include(x => x.Category)
+                .Where(x => x.PublishDate <= DateTime.Now)
+                .Select(x => new ArticleQueryModel
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    Slug = x.Slug,
+                    Picture = x.Picture,
+                    PictureAlt = x.PictureAlt,
+                    PictureTitle = x.PictureTitle,
+                    PublishDate = x.PublishDate.ToFarsi(),
                     ShortDescription = x.ShortDescription
                 }).OrderByDescending(x => x.Id).Take(6).ToList();
         }

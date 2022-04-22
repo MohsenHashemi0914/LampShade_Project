@@ -44,9 +44,7 @@
                                 <input type="file" class="form-control" asp-for="Command.Picture" accept="image/*">
                                 <span asp-validation-for="Command.Picture" class="error"></span>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label asp-for="Command.CategoryId" class="control-label">گروه مقاله</label>
                                     <select type="text" class="form-control" asp-for="Command.CategoryId" asp-items="@Model.ArticleCategories">
