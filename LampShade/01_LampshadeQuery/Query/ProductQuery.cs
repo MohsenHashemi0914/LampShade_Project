@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using _0_Framework.Application;
+﻿using _0_Framework.Application;
 using _01_LampshadeQuery.Contracts.Product;
 using DiscountManagement.Infrastructure.EFCore;
 using InventoryManagement.Infrastructure.EFCore;
@@ -151,13 +148,15 @@ namespace _01_LampshadeQuery.Query
                     Slug = x.Slug,
                     Category = x.Category.Name,
                     CategorySlug = x.Category.Slug,
+                    KeyWords = x.KeyWords,
                     Picture = x.Picture,
                     PictureAlt = x.PictureAlt,
                     PictureTitle = x.PictureTitle
                 }).AsNoTracking();
 
             if (!string.IsNullOrWhiteSpace(value))
-                query = query.Where(x => x.Name.Contains(value) || x.ShortDescription.Contains(value));
+                query = query.Where(x => x.Name.Contains(value)
+                || x.ShortDescription.Contains(value) || x.KeyWords.Contains(value));
 
             var products = query.OrderByDescending(x => x.Id).ToList();
 

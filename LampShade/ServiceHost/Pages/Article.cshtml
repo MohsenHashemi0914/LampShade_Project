@@ -60,12 +60,17 @@
                                         </div>
 
                                         <div class="tag-area">
-                                            <span>Tags: </span>
+                                            <span>تگ ها: </span>
                                             <ul>
-                                                <li><a href="#">Image</a>,</li>
-                                                <li>
-                                                    <a href="#">furniture</a>
-                                                </li>
+                                                @if (Model.Article != null && Model.Article.KeywordList != null && Model.Article.KeywordList.Any())
+                                                {
+                                                    foreach (var tag in Model.Article.KeywordList)
+                                                    {
+                                                        <li>
+                                                            <a asp-page="./Search" asp-route-value="@tag">@tag</a>@(tag != Model.Article.KeywordList.Last() ? "," : "")
+                                                        </li>
+                                                    }
+                                                }
                                             </ul>
                                         </div>
                                         <div class="social-share-buttons">
@@ -225,8 +230,8 @@
                                                 foreach (var category in Model.LatestArticleCategories)
                                                 {
                                                     <li>
-                                                        <a asp-page="./ArticleCategory" asp-route-id="@category.Slug" 
-                                                        class="@(category == Model.LatestArticleCategories.First() ? "active" : "")">
+                                                        <a asp-page="./ArticleCategory" asp-route-id="@category.Slug"
+                                                   class="@(category == Model.LatestArticleCategories.First() ? "active" : "")">
                                                             @category.Name <span class="counter">@category.ArticlesCount</span>
                                                         </a>
                                                     </li>
@@ -245,7 +250,7 @@
                                                 {
                                                     <div class="single-block d-flex">
                                                         <div class="image">
-                                                            <a href="blog-post-image-format.html">
+                                                            <a asp-page="./Article" asp-route-id="@article.Slug">
                                                                 <img src="~/ProductPictures/@article.Picture"
                                                              class="img-fluid" alt="@article.PictureAlt"
                                                              title="@article.PictureTitle">
@@ -265,32 +270,18 @@
                                     </div>
 
                                     <div class="single-sidebar-widget">
-                                        <h4 class="single-sidebar-widget__title">Popular Tags</h4>
+                                        <h4 class="single-sidebar-widget__title">تگ ها</h4>
                                         <ul class="single-sidebar-widget__tag-list">
-                                            <li>
-                                                <a href="#">Car Seats</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Chair</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Engine Parts</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Sofas</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Sofas</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Decor</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Furniture</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Chair</a>
-                                            </li>
+
+                                            @if (Model.Article != null && Model.Article.KeywordList != null && Model.Article.KeywordList.Any())
+                                            {
+                                                foreach (var tag in Model.Article.KeywordList)
+                                                {
+                                                    <li>
+                                                        <a asp-page="./Search" asp-route-value="@tag">@tag</a>
+                                                    </li>
+                                                }
+                                            }
 
                                         </ul>
                                     </div>

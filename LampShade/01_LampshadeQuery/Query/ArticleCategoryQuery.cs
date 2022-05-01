@@ -1,4 +1,7 @@
-﻿using _01_LampshadeQuery.Contracts.ArticleCategory;
+﻿using _0_Framework.Application;
+using _01_LampshadeQuery.Contracts.Article;
+using _01_LampshadeQuery.Contracts.ArticleCategory;
+using BlogManagement.Domain.ArticleAgg;
 using BlogManagement.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,6 +20,30 @@ namespace _01_LampshadeQuery.Query
 
         #endregion
 
+        public ArticleCategoryQueryModel GetArticleCategoryWithArticles(string slug)
+        {
+            var articleCategory = _blogContext.ArticleCategories
+                .Include(x => x.Articles)
+                .Select(x => new ArticleCategoryQueryModel
+                {
+                    Name = x.Name,
+                    Slug = x.Slug,
+                    Picture = x.Picture,
+                    PictureAlt =x.PictureAlt,
+                    PictureTitle = x.PictureTitle,
+                    Description = x.Description,
+                    MetaDescription= x.MetaDescription,
+                    Keywords = x.Keywords,
+                    CanonicalAddress = x.CanonicalAddress,
+                    Articles = MapArticles(x.Articles),
+                    ArticlesCount = (short)x.Articles.Count()
+                }).AsNoTracking().FirstOrDefault(x => x.Slug == slug);
+
+            articleCategory.KeywordList = articleCategory.Keywords.Split(',').ToList();
+
+            return articleCategory;
+        }
+
         public List<ArticleCategoryQueryModel> GetLatestArticleCategories()
         {
             return _blogContext.ArticleCategories
@@ -29,8 +56,27 @@ namespace _01_LampshadeQuery.Query
                     PictureAlt = x.PictureAlt,
                     PictureTitle = x.PictureTitle,
                     Slug = x.Slug,
-                    ArticlesCount = x.Articles.Count()
-                }).OrderByDescending(x => x.Id).Take(6).ToList();
+                    ArticlesCount = (short)x.Articles.Count()
+                }).AsNoTracking()
+                .OrderByDescending(x => x.Id).Take(6).ToList();
         }
+
+        #region Utilities
+
+        private static List<ArticleQueryModel> MapArticles(List<Article> articles)
+        {
+            return articles.Select(x => new ArticleQueryModel
+            {
+                Slug = x.Slug,
+                Title = x.Title,
+                Picture = x.Picture,
+                PictureAlt = x.PictureAlt,
+                PictureTitle = x.PictureTitle, 
+                PublishDate = x.PublishDate.ToFarsi(),
+                ShortDescription = x.ShortDescription
+            }).ToList();
+        }
+
+        #endregion
     }
 }

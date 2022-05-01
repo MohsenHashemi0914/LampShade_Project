@@ -51,7 +51,7 @@ namespace BlogManagement.Infrastructure.EFCore.Repository
                 {
                     Id = x.Id,
                     Title = x.Title,
-                    ShortDescription = x.ShortDescription,
+                    ShortDescription = $"{x.ShortDescription.Substring(0, Math.Min(x.ShortDescription.Length, 50))} ...",
                     PublishDate = x.PublishDate.ToFarsi(),
                     Picture = x.Picture,
                     Category = x.Category.Name,
