@@ -12,8 +12,8 @@ namespace InventoryManagement.Configuration
     {
         public static void Configure(IServiceCollection services, string connectionString)
         {
-            services.AddTransient<IInventoryRepository, InventoryRepository>();
-            services.AddTransient<IInventoryApplication, InventoryApplication>();
+            services.AddScoped<IInventoryRepository, InventoryRepository>();
+            services.AddScoped<IInventoryApplication, InventoryApplication>();
 
             services.AddDbContext<InventoryContext>(options => options.UseSqlServer(connectionString));
         }

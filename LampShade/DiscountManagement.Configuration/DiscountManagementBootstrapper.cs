@@ -14,11 +14,11 @@ namespace DiscountManagement.Configuration
     {
         public static void Configure(IServiceCollection services, string connectionString)
         {
-            services.AddTransient<ICustomerDiscountRepository, CustomerDiscountRepository>();
-            services.AddTransient<ICustomerDiscountApplication, CustomerDiscountApplication>();
+            services.AddScoped<ICustomerDiscountRepository, CustomerDiscountRepository>();
+            services.AddScoped<ICustomerDiscountApplication, CustomerDiscountApplication>();
 
-            services.AddTransient<IColleagueDiscountRepository, ColleagueDiscountRepository>();
-            services.AddTransient<IColleagueDiscountApplication, ColleagueDiscountApplication>();
+            services.AddScoped<IColleagueDiscountRepository, ColleagueDiscountRepository>();
+            services.AddScoped<IColleagueDiscountApplication, ColleagueDiscountApplication>();
 
             services.AddDbContext<DiscountContext>(options => options.UseSqlServer(connectionString));
         }

@@ -1,7 +1,9 @@
 ﻿@page "{id}"
 @model ServiceHost.Pages.ArticleCategoryModel
 @{
-    ViewData["Title"] = "مقالات";
+    ViewData["Title"] = @Model.ArticleCategory.Name;
+    ViewData["MetaKeywords"] = Model.ArticleCategory.Keywords;
+    ViewData["MetaDescription"] = Model.ArticleCategory.MetaDescription;
 }
 
 <div class="breadcrumb-area section-space--half">
@@ -51,11 +53,11 @@
 
                                                         </div>
                                                         <div class="single-blog-post__content">
-                                                            <h3 class="title">
+                                                            <h2 class="title">
                                                                 <a asp-page="./Article" asp-route-id="@article.Slug">
                                                                     @article.Title
                                                                 </a>
-                                                            </h3>
+                                                            </h2>
                                                             <p class="post-meta">
                                                                 <span class="date">@article.PublishDate</span>
                                                             </p>
@@ -100,7 +102,7 @@
                                 <div class="page-sidebar-wrapper">
                                     <div class="single-sidebar-widget">
 
-                                        <h4 class="single-sidebar-widget__title">گروه مقالات</h4>
+                                        <h3 class="single-sidebar-widget__title">آخرین گروه مقالات</h3>
                                         <ul class="single-sidebar-widget__category-list">
 
                                             @if (Model.LatestArticleCategories != null && Model.LatestArticleCategories.Any())
@@ -119,7 +121,7 @@
                                     </div>
                                     <div class="single-sidebar-widget">
 
-                                        <h4 class="single-sidebar-widget__title">آخرین مقالات</h4>
+                                        <h3 class="single-sidebar-widget__title">آخرین مقالات</h3>
                                         <div class="block-container">
 
                                             @if (Model.LatestArticles != null && Model.LatestArticles.Any())
@@ -149,7 +151,7 @@
                                     </div>
 
                                     <div class="single-sidebar-widget">
-                                        <h4 class="single-sidebar-widget__title">تگ ها</h4>
+                                        <h3 class="single-sidebar-widget__title">تگ ها</h3>
                                         <ul class="single-sidebar-widget__tag-list">
 
                                             @if (Model.ArticleCategory.KeywordList != null && Model.ArticleCategory.KeywordList.Any())

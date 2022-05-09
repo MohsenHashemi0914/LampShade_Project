@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using _01_LampshadeQuery.Contracts.Comment;
 
 namespace _01_LampshadeQuery.Contracts.Product
 {

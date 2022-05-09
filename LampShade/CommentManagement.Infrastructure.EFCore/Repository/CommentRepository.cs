@@ -1,10 +1,8 @@
 ﻿using _0_Framework.Application;
 using _0_Framework.Infrastructure;
-using Microsoft.EntityFrameworkCore;
-using ShopManagement.Application.Contracts.Comment;
-using ShopManagement.Domain.CommentAgg;
-using System.Collections.Generic;
-using System.Linq;
+using CommentManagement.Application.Contracts.Comment;
+using CommentManagement.Domain.CommentAgg;
+using CommentManagement.Infrastructure.EFCore;
 
 namespace ShopManagement.Infrastructure.EFCore.Repository
 {
@@ -12,9 +10,9 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
     {
         #region Constructor
 
-        private readonly ShopContext _context;
+        private readonly CommentContext _context;
 
-        public CommentRepository(ShopContext context) : base(context)
+        public CommentRepository(CommentContext context) : base(context)
         {
             _context = context;
         }
@@ -24,17 +22,17 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
         public List<CommentViewModel> Search(CommentSearchModel searchModel)
         {
             var query = _context.Comments
-                .Include(x => x.Product)
                 .Select(x => new CommentViewModel
                 {
                     Id = x.Id,
                     Name = x.Name,
-                    Message = x.Message,
                     Email = x.Email,
+                    WebSite = x.WebSite,
+                    Message = x.Message,
                     IsCanceled = x.IsCanceled,
                     IsConfirmed = x.IsConfirmed,
-                    ProductId = x.ProductId,
-                    ProductName = x.Product.Name,
+                    OwnerRecordId = x.OwnerRecordId,
+                    Type = x.Type,
                     CommentDate = x.CreationDate.ToFarsi()
                 });
 

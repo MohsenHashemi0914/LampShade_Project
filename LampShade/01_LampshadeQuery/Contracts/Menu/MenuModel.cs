@@ -1,7 +1,7 @@
 ﻿using _01_LampshadeQuery.Contracts.ArticleCategory;
 using _01_LampshadeQuery.Contracts.ProductCategory;
 
-namespace _01_LampshadeQuery
+namespace _01_LampshadeQuery.Contracts.Menu
 {
     public class MenuModel
     {

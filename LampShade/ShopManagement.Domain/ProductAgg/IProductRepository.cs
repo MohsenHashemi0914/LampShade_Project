@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using _0_Framework.Domain;
+﻿using _0_Framework.Domain;
 using ShopManagement.Application.Contracts.Product;
 
 namespace ShopManagement.Domain.ProductAgg

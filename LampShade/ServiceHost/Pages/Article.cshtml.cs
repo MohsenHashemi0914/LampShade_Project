@@ -1,5 +1,8 @@
+using _0_Framework.Presentation;
 using _01_LampshadeQuery.Contracts.Article;
 using _01_LampshadeQuery.Contracts.ArticleCategory;
+using CommentManagement.Application.Contracts.Comment;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ServiceHost.Pages
@@ -14,11 +17,13 @@ namespace ServiceHost.Pages
 
         private readonly IArticleQuery _articleQuery;
         private readonly IArticleCategoryQuery _articleCategoryQuery;
+        private readonly ICommentApplication _commentApplication;
 
-        public ArticleModel(IArticleQuery articleQuery, IArticleCategoryQuery articleCategoryQuery)
+        public ArticleModel(IServiceProvider serviceProvider)
         {
-            _articleQuery = articleQuery;
-            _articleCategoryQuery = articleCategoryQuery;
+            _articleQuery = serviceProvider.GetService<IArticleQuery>();
+            _articleCategoryQuery = serviceProvider.GetService<IArticleCategoryQuery>();
+            _commentApplication = serviceProvider.GetService<ICommentApplication>();
         }
 
         #endregion
@@ -28,6 +33,13 @@ namespace ServiceHost.Pages
             Article = _articleQuery.GetDetails(id);
             LatestArticles = _articleQuery.GetLatestArticles();
             LatestArticleCategories = _articleCategoryQuery.GetLatestArticleCategories();
+        }
+
+        public IActionResult OnPost(AddComment command, string articleSlug)
+        {
+            command.Type = CommentType.Article;
+            var result = _commentApplication.Add(command);
+            return RedirectToPage("./Article", new { id = articleSlug });
         }
     }
 }
