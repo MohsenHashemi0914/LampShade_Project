@@ -1,6 +1,8 @@
-﻿using _0_Framework.Infrastructure;
+﻿using _0_Framework.Application;
+using _0_Framework.Infrastructure;
 using AccountManagement.Application.Contracts.Account;
 using AccountManagement.Domain.AccountAgg;
+using Microsoft.EntityFrameworkCore;
 
 namespace AccountManagement.Infrastructure.EFCore.Repository
 {
@@ -32,15 +34,17 @@ namespace AccountManagement.Infrastructure.EFCore.Repository
         public List<AccountViewModel> Search(AccountSearchModel searchModel)
         {
             var query = _context.Accounts
+                .Include(x => x.Role)
                 .Select(x => new AccountViewModel
                 {
                     Id = x.Id,
-                    Role = "مدیر سیستم",
-                    RoleId = 2, // Temperory value for test
+                    Role = x.Role.Name,
+                    RoleId = x.RoleId,
                     Mobile = x.Mobile,
                     FullName = x.FullName,
                     UserName = x.UserName,
-                    ProfilePhoto = x.ProfilePhoto
+                    ProfilePhoto = x.ProfilePhoto,
+                    CreationDate = x.CreationDate.ToFarsi()
                 });
 
             if (searchModel.RoleId > 0)
