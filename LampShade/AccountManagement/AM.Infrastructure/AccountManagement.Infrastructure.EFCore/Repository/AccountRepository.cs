@@ -19,6 +19,11 @@ namespace AccountManagement.Infrastructure.EFCore.Repository
 
         #endregion
 
+        public Account GetBy(string userName)
+        {
+            return _context.Accounts.FirstOrDefault(a => a.UserName == userName);
+        }
+
         public EditAccount GetDetails(long id)
         {
             return _context.Accounts.Select(x => new EditAccount
