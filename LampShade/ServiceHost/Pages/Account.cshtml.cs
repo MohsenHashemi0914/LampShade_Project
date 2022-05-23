@@ -6,7 +6,8 @@ namespace ServiceHost.Pages
 {
     public class AccountModel : PageModel
     {
-        [TempData] public string Message { get; set; }
+        [TempData] public string LoginMessage { get; set; }
+        [TempData] public string RegisterMessage { get; set; }
 
         #region Constructor
 
@@ -29,7 +30,7 @@ namespace ServiceHost.Pages
             if (result.IsSucceeded)
                 return RedirectToPage("./Index");
 
-            Message = result.Message;
+            LoginMessage = result.Message;
             return RedirectToPage("./Account");
         }
 
@@ -37,6 +38,15 @@ namespace ServiceHost.Pages
         {
             _accountApplication.Logout();
             return RedirectToPage("./Index");
+        }
+
+        public IActionResult OnPostRegister(RegisterAccount command)
+        {
+            var result = _accountApplication.Register(command);
+            if (!result.IsSucceeded)
+                RegisterMessage = result.Message;
+
+            return RedirectToPage("./Account");
         }
     }
 }

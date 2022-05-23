@@ -7,6 +7,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Content Remove="Pages\AccessDenied.cshtml" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.4">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -15,6 +19,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Include="Pages\AccessDenied.cshtml" />
 		<None Include="Pages\Account.cshtml" />
 		<None Include="Pages\Article.cshtml" />
 		<None Include="Pages\Product.cshtml" />
@@ -27,6 +32,14 @@
 	  <ProjectReference Include="..\DiscountManagement\DM.Infrastructure\DiscountManagement.Configuration\DiscountManagement.Configuration.csproj" />
 	  <ProjectReference Include="..\InventoryManagement\IM.Infrastructure\InventoryManagement.Configuration\InventoryManagement.Configuration.csproj" />
 	  <ProjectReference Include="..\ShopManagement\SM.Infrastructure\ShopManagement.Configuration\ShopManagement.Configuration.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <UpToDateCheckInput Remove="Pages\AccessDenied.cshtml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <_ContentIncludedByDefault Remove="Pages\AccessDenied.cshtml" />
 	</ItemGroup>
 
 </Project>

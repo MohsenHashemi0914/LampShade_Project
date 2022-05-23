@@ -1,4 +1,5 @@
 using _0_Framework.Application;
+using _0_Framework.Infrastructure;
 using AccountManagement.Configuration;
 using BlogManagement.Configuration;
 using CommentManagement.Configuration;
@@ -48,7 +49,29 @@ namespace ServiceHost
                     c.AccessDeniedPath = new PathString("/AccessDenied");
                 });
 
-            services.AddRazorPages();
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdminArea", builder =>
+                builder.RequireRole(new List<string> { Roles.Administrator, Roles.ContentUploader }));
+
+                options.AddPolicy("Shop", builder =>
+                builder.RequireRole(Roles.Administrator));
+
+                options.AddPolicy("Account", builder =>
+                builder.RequireRole(Roles.Administrator));
+
+                options.AddPolicy("Discount", builder =>
+                builder.RequireRole(Roles.Administrator));
+            });
+
+            services.AddRazorPages()
+                .AddRazorPagesOptions(options =>
+                {
+                    options.Conventions.AuthorizeAreaFolder("Administration", "/", "AdminArea");
+                    options.Conventions.AuthorizeAreaFolder("Administration", "/Shop", "Shop");
+                    options.Conventions.AuthorizeAreaFolder("Administration", "/Account", "Account");
+                    options.Conventions.AuthorizeAreaFolder("Administration", "/Discount", "Discount");
+                });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

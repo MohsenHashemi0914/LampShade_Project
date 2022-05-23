@@ -24,7 +24,7 @@ namespace AccountManagement.Application
 
         #endregion
 
-        public OperationResult Create(CreateAccount command)
+        public OperationResult Register(RegisterAccount command)
         {
             var operation = new OperationResult();
             if (_accountRepository.IsExist(x => x.UserName == command.UserName || x.Mobile == command.Mobile))
