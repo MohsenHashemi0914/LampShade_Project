@@ -4,16 +4,16 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ServiceHost.Areas.Administration.Pages.Account.Roles
 {
-    public class IndexModel : PageModel
+    public class CreateModel : PageModel
     {
         [TempData] public string Message { get; set; }
-        public List<RoleViewModel> Roles;
+        public CreateRole Command { get; set; }
 
         #region Constructor
 
         private readonly IRoleApplication _roleApplication;
 
-        public IndexModel(IRoleApplication roleApplication)
+        public CreateModel(IRoleApplication roleApplication)
         {
             _roleApplication = roleApplication;
         }
@@ -22,7 +22,15 @@ namespace ServiceHost.Areas.Administration.Pages.Account.Roles
 
         public void OnGet()
         {
-            Roles = _roleApplication.GetList();
+        }
+
+        public IActionResult OnPost(CreateRole command)
+        {
+            var result = _roleApplication.Create(command);
+            if (!result.IsSucceeded)
+                Message = result.Message;
+
+            return RedirectToPage("./Index");
         }
     }
 }

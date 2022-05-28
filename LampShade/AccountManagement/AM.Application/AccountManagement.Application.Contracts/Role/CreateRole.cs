@@ -7,5 +7,6 @@ namespace AccountManagement.Application.Contracts.Role
     {
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string Name { get; set; }
+        public List<int> Permissions { get; set; } = new();
     }
 }

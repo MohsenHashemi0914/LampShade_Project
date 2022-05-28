@@ -23,7 +23,10 @@ namespace AccountManagement.Application
             if (_roleRepository.IsExist(x => x.Name == command.Name))
                 return operation.Failed(ApplicationMessages.DuplicatedRecord);
 
-            var role = new Role(command.Name);
+            var permissions = new List<Permission>();
+            command.Permissions.ForEach(code => permissions.Add(new Permission(code)));
+
+            var role = new Role(command.Name, permissions);
             _roleRepository.Add(role);
             _roleRepository.SaveChanges();
 
@@ -41,7 +44,10 @@ namespace AccountManagement.Application
             if (role is null)
                 return operation.Failed(ApplicationMessages.RecordNotFound);
 
-            role.Edit(command.Name);
+            var permissions = new List<Permission>();
+            command.Permissions.ForEach(code => permissions.Add(new Permission(code)));
+
+            role.Edit(command.Name, permissions);
             _roleRepository.SaveChanges();
             return operation.Succeeded();
         }

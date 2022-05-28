@@ -1,14 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
-
-	<ItemGroup>
-	  <Content Remove="Pages\AccessDenied.cshtml" />
-	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.4">
@@ -32,14 +28,6 @@
 	  <ProjectReference Include="..\DiscountManagement\DM.Infrastructure\DiscountManagement.Configuration\DiscountManagement.Configuration.csproj" />
 	  <ProjectReference Include="..\InventoryManagement\IM.Infrastructure\InventoryManagement.Configuration\InventoryManagement.Configuration.csproj" />
 	  <ProjectReference Include="..\ShopManagement\SM.Infrastructure\ShopManagement.Configuration\ShopManagement.Configuration.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <UpToDateCheckInput Remove="Pages\AccessDenied.cshtml" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <_ContentIncludedByDefault Remove="Pages\AccessDenied.cshtml" />
 	</ItemGroup>
 
 </Project>
