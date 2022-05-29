@@ -1,5 +1,6 @@
 ﻿@page
 @model ServiceHost.Areas.Administration.Pages.Shop.Products.IndexModel
+@using ShopManagement.Configuration.Permissions
 
 @{
     Layout = "Shared/_AdminLayout";
@@ -10,12 +11,12 @@
     <div class="col-sm-12">
         <h4 class="page-title pull-right">@ViewData["Title"]</h4>
         <p class="pull-left">
-            <a class="btn btn-success btn-lg" href="#showmodal=@Url.Page("./Index", "Create")">ایجاد محصول جدید</a>
+            <a Permission="ShopPermissions.CreateProduct" class="btn btn-success btn-lg" href="#showmodal=@Url.Page("./Index", "Create")">ایجاد محصول جدید</a>
         </p>
     </div>
 </div>
 
-<div class="row">
+<div class="row" Permission="ShopPermissions.SearchProducts">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -46,7 +47,7 @@
     </div>
 </div>
 
-<div class="row" id="ProductCategoriesDiv">
+<div class="row" Permission="ShopPermissions.ListProducts">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -82,7 +83,7 @@
                                             <td>@item.Category</td>
                                             <td>@item.CreationDate</td>
                                             <td>
-                                                <a class="btn btn-warning waves-effect waves-light m-b-5"
+                                                <a Permission="ShopPermissions.EditProduct" class="btn btn-warning waves-effect waves-light m-b-5"
                                                    href="#showmodal=@Url.Page("./Index", "Edit", new { id = item.Id})">
                                                     <i class="fa fa-edit"></i> ویرایش
                                                 </a>

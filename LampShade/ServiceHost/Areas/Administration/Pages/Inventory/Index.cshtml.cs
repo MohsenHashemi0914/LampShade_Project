@@ -1,5 +1,6 @@
 using _0_Framework.Infrastructure;
 using InventoryManagement.Application.Contracts.Inventory;
+using InventoryManagement.Configuration.Permissions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -31,12 +32,14 @@ namespace ServiceHost.Areas.Administration.Pages.Inventory
 
         #endregion
 
+        [NeedsPermission(InventoryPermissions.ListInventory)]
         public void OnGet(InventorySearchModel searchModel)
         {
             Inventory = _inventoryApplication.Search(searchModel);
             Products = new SelectList(GetProductsForSelect(), "Id", "Name");
         }
 
+        [NeedsPermission(InventoryPermissions.CreateInventory)]
         public IActionResult OnGetCreate()
         {
             var command = new CreateInventory
@@ -46,12 +49,14 @@ namespace ServiceHost.Areas.Administration.Pages.Inventory
             return Partial("./Create", command);
         }
 
+        [NeedsPermission(InventoryPermissions.CreateInventory)]
         public IActionResult OnPostCreate(CreateInventory command)
         {
             var result = _inventoryApplication.Create(command);
             return new JsonResult(result);
         }
 
+        [NeedsPermission(InventoryPermissions.EditInventory)]
         public IActionResult OnGetEdit(long id)
         {
             var inventory = _inventoryApplication.GetDetails(id);
@@ -59,6 +64,7 @@ namespace ServiceHost.Areas.Administration.Pages.Inventory
             return Partial("./Edit", inventory);
         }
 
+        [NeedsPermission(InventoryPermissions.EditInventory)]
         public IActionResult OnPostEdit(EditInventory command)
         {
             var result = _inventoryApplication.Edit(command);
@@ -74,6 +80,7 @@ namespace ServiceHost.Areas.Administration.Pages.Inventory
             return Partial("./Increase", command);
         }
 
+        [NeedsPermission(InventoryPermissions.Increase)]
         public IActionResult OnPostIncrease(IncreaseInventory command)
         {
             var result = _inventoryApplication.Increase(command);
@@ -89,6 +96,7 @@ namespace ServiceHost.Areas.Administration.Pages.Inventory
             return Partial("./Reduce", command);
         }
 
+        [NeedsPermission(InventoryPermissions.Reduce)]
         public IActionResult OnPostReduce(ReduceInventory command)
         {
             var result = _inventoryApplication.Reduce(command);
