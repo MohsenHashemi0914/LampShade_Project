@@ -12,13 +12,18 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.3" />
+		<PackageReference Include="Nancy" Version="2.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<None Include="Pages\AccessDenied.cshtml" />
 		<None Include="Pages\Account.cshtml" />
 		<None Include="Pages\Article.cshtml" />
+		<None Include="Pages\ArticleCategory.cshtml" />
 		<None Include="Pages\Product.cshtml" />
+		<None Include="Pages\ProductCategory.cshtml" />
+		<None Include="Pages\Search.cshtml" />
+		<None Include="Pages\Cart.cshtml" />
 	</ItemGroup>
 
 	<ItemGroup>

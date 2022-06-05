@@ -28,8 +28,7 @@ namespace ServiceHost
                 (NeedsPermissionAttribute)context.HandlerMethod.MethodInfo
                 .GetCustomAttribute(typeof(NeedsPermissionAttribute));
 
-            if (handlerPermission is null)
-                return;
+            if (handlerPermission is null) return;
 
             if (_authHelper.GetCurrentAccountPermissions().All(x => x != handlerPermission.Permission))
                 context.HttpContext.Response.Redirect("/Account");

@@ -7,6 +7,7 @@ using DiscountManagement.Infrastructure.EFCore;
 using InventoryManagement.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using ShopManagement.Application.Contracts.Order;
 using ShopManagement.Domain.ProductPictureAgg;
 using ShopManagement.Infrastructure.EFCore;
 
@@ -52,6 +53,7 @@ namespace _01_LampshadeQuery.Query
                 x.ProductId == product.Id)?.DiscountRate ?? 0;
 
             product.Price = price.ToMoney();
+            product.DoublePrice = price;
             product.DiscountRate = discountRate;
             product.HasDiscount = discountRate > 0;
             product.IsInStock = inventory.FirstOrDefault(x =>
@@ -177,6 +179,22 @@ namespace _01_LampshadeQuery.Query
             });
 
             return products;
+        }
+
+        public List<CartItem> CheckInventoryStatusFor(List<CartItem> cartItems)
+        {
+            var inventory = _inventoryContext.Inventory
+                .Select(x => new { x.ProductId, x.IsInStock, CurrentCount = x.CalculateCurrentCount() });
+           
+            cartItems.Where(cartItem => inventory.Any(x => cartItem.Id == x.ProductId && x.IsInStock))
+                .ToList()
+                .ForEach(cartItem =>
+            {
+                var itemInventory = inventory.First(x => x.ProductId == cartItem.Id);
+                cartItem.IsInStock = itemInventory.CurrentCount >= cartItem.Count;
+            });
+           
+            return cartItems;
         }
 
         #region Utilities
