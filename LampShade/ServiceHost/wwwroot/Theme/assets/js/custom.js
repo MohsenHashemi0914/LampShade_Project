@@ -67,3 +67,14 @@ function removeFromCart(id) {
     $.cookie(cookieName, JSON.stringify(products), { expires: 2, path: "/" });
     updateCart();
 }
+
+function changeCartItemCount(id, totalItemPriceId, count) {
+    let products = $.cookie(cookieName);
+    products = JSON.parse(products);
+    const productIndex = products.findIndex(x => x.id === id);
+    products[productIndex].count = count;
+    const newTotalPrice = parseInt(products[productIndex].unitPrice) * parseInt(count);
+    $(`#${totalItemPriceId}`).text(newTotalPrice);
+    $.cookie(cookieName, JSON.stringify(products), { expires: 2, path: "/" });
+    updateCart();
+}

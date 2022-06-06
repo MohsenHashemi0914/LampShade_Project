@@ -24,11 +24,7 @@ namespace ServiceHost.Pages
 
         public void OnGet()
         {
-            var serializer = new JavaScriptSerializer();
-            var value = Request.Cookies[_cookieName];
-            var cartItems = serializer.Deserialize<List<CartItem>>(value) ?? new();
-            cartItems.ForEach(x => x.TotalItemPrice = x.UnitPrice * x.Count);
-            CartItems = _productQuery.CheckInventoryStatusFor(cartItems);
+            GetCartItems();
         }
 
         public IActionResult OnGetRemoveFromCart(long id)
@@ -45,5 +41,30 @@ namespace ServiceHost.Pages
             Response.Cookies.Append(_cookieName, serializer.Serialize(cartItems), options);
             return RedirectToPage("./Cart");
         }
+
+        public IActionResult OnGetRevalidateInventory()
+        {
+            GetCartItems();
+
+            if (CartItems.Any(x => !x.IsInStock))
+            {
+                return RedirectToPage("./Cart");
+            }
+
+            return RedirectToPage("./CheckOut");
+        }
+
+        #region Utilities
+
+        private void GetCartItems()
+        {
+            var serializer = new JavaScriptSerializer();
+            var value = Request.Cookies[_cookieName];
+            var cartItems = serializer.Deserialize<List<CartItem>>(value) ?? new();
+            cartItems.ForEach(x => x.TotalItemPrice = x.UnitPrice * x.Count);
+            CartItems = _productQuery.CheckInventoryStatusFor(cartItems);
+        }
+
+        #endregion
     }
 }
