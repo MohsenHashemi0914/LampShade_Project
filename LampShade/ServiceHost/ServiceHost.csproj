@@ -20,6 +20,7 @@
 		<None Include="Pages\Account.cshtml" />
 		<None Include="Pages\Article.cshtml" />
 		<None Include="Pages\ArticleCategory.cshtml" />
+		<None Include="Pages\Checkout.cshtml" />
 		<None Include="Pages\Product.cshtml" />
 		<None Include="Pages\ProductCategory.cshtml" />
 		<None Include="Pages\Search.cshtml" />

@@ -51,7 +51,7 @@ namespace ServiceHost.Pages
                 return RedirectToPage("./Cart");
             }
 
-            return RedirectToPage("./CheckOut");
+            return RedirectToPage("./Checkout");
         }
 
         #region Utilities
@@ -61,7 +61,7 @@ namespace ServiceHost.Pages
             var serializer = new JavaScriptSerializer();
             var value = Request.Cookies[_cookieName];
             var cartItems = serializer.Deserialize<List<CartItem>>(value) ?? new();
-            cartItems.ForEach(x => x.TotalItemPrice = x.UnitPrice * x.Count);
+            cartItems.ForEach(x => x.CalculateTotalItemPrice());
             CartItems = _productQuery.CheckInventoryStatusFor(cartItems);
         }
 

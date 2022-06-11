@@ -1,4 +1,5 @@
 ﻿using _0_Framework.Infrastructure;
+using _01_LampshadeQuery.Contracts;
 using _01_LampshadeQuery.Contracts.Product;
 using _01_LampshadeQuery.Contracts.ProductCategory;
 using _01_LampshadeQuery.Contracts.Slide;
@@ -40,6 +41,7 @@ namespace ShopManagement.Configuration
             services.AddScoped<IProductCategoryQuery, ProductCategoryQuery>();
             services.AddScoped<IProductQuery, ProductQuery>();
             services.AddScoped<IPermissionExposer, ShopPermissionExposer>();
+            services.AddScoped<ICartCalculatorService, CartCalculatorService>();
 
             services.AddDbContext<ShopContext>(options => options.UseSqlServer(connectionString));
         }

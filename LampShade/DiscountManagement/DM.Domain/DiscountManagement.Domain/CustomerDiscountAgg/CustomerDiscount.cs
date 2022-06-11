@@ -31,5 +31,10 @@ namespace DiscountManagement.Domain.CustomerDiscountAgg
             EndDate = endDate;
             Reason = reason;
         }
+
+        public bool IsInRange()
+        {
+            return StartDate <= DateTime.Now && EndDate >= DateTime.Now;
+        }
     }
 }

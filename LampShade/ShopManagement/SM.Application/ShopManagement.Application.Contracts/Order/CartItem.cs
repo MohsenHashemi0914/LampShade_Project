@@ -9,10 +9,31 @@
         public int Count { get; set; }
         public double TotalItemPrice { get; set; }
         public bool IsInStock { get; set; }
+        public int DiscountRate { get; set; }
+        public double DiscountAmount { get; set; }
+        public double ItemPayAmount { get; set; }
 
         public CartItem()
         {
-            TotalItemPrice = UnitPrice * Count;
+            CalculateTotalItemPrice();
+            CalculateItemPayAmount();
+        }
+
+        public void CalculateTotalItemPrice()
+        {
+            TotalItemPrice = (UnitPrice * Count);
+        }
+
+        public void CalculateItemPayAmount()
+        {
+            ItemPayAmount = (TotalItemPrice - DiscountAmount);
+        }
+
+        public void CalculateItemDiscount(int discountRate)
+        {
+            DiscountRate = discountRate;
+            DiscountAmount = ((TotalItemPrice * DiscountRate) / 100);
+            CalculateItemPayAmount();
         }
     }
 }
