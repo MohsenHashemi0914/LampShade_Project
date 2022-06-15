@@ -57,6 +57,11 @@ namespace _0_Framework.Application
             return _contextAccessor.HttpContext.User.Identity.IsAuthenticated;
         }
 
+        public long CurrentAccountId()
+        {
+            return IsAuthenticated() ? long.Parse(_contextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "AccountId")?.Value) : 0;
+        }
+
         public string CurrentAccountRole()
         {
             return IsAuthenticated() ? _contextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role).Value : null;

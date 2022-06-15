@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace InventoryManagement.Domain.InventoryAgg
+﻿namespace InventoryManagement.Domain.InventoryAgg
 {
     public class InventoryOperation
     {

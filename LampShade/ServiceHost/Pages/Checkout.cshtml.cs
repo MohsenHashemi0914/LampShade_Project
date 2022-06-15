@@ -1,4 +1,6 @@
 using _01_LampshadeQuery.Contracts;
+using _01_LampshadeQuery.Contracts.Product;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Nancy.Json;
 using ShopManagement.Application.Contracts.Order;
@@ -12,12 +14,17 @@ namespace ServiceHost.Pages
 
         #region Constructor
 
+        private readonly ICartService _cartService;
+        private readonly IProductQuery _productQuery;
         private readonly ICartCalculatorService _cartCalculatorService;
 
-        public CheckoutModel(ICartCalculatorService cartCalculator)
+        public CheckoutModel(ICartCalculatorService cartCalculator,
+            ICartService cartService, IProductQuery productQuery)
         {
-            _cartCalculatorService = cartCalculator;
             Cart = new();
+            _cartService = cartService;
+            _productQuery = productQuery;
+            _cartCalculatorService = cartCalculator;
         }
 
         #endregion
@@ -35,6 +42,14 @@ namespace ServiceHost.Pages
             });
 
             Cart = _cartCalculatorService.ComputeCart(cartItems);
+            _cartService.Set(Cart);
+        }
+
+        public IActionResult OnGetPay()
+        {
+            var cart = _cartService.Get();
+            var cartItems = _productQuery.CheckInventoryStatusFor(cart.CartItems);
+            return RedirectToPage(cartItems.Any(x => !x.IsInStock) ? "./Cart" : "./Checkout");
         }
     }
 }
