@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CommentManagement.Infrastructure.EFCore.Migrations
 {
-    public partial class CommentManagementAdded : Migration
+    public partial class CommentAddedAgain : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -23,7 +23,7 @@ namespace CommentManagement.Infrastructure.EFCore.Migrations
                     IsCanceled = table.Column<bool>(type: "bit", nullable: false),
                     OwnerRecordId = table.Column<long>(type: "bigint", nullable: false),
                     Type = table.Column<byte>(type: "tinyint", nullable: false),
-                    ParentId = table.Column<long>(type: "bigint", nullable: false),
+                    ParentId = table.Column<long>(type: "bigint", nullable: true),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -33,8 +33,7 @@ namespace CommentManagement.Infrastructure.EFCore.Migrations
                         name: "FK_Comments_Comments_ParentId",
                         column: x => x.ParentId,
                         principalTable: "Comments",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(

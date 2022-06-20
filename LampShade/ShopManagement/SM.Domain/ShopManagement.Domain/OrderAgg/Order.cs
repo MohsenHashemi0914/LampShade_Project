@@ -8,7 +8,7 @@ namespace ShopManagement.Domain.OrderAgg
         public double TotalAmount { get; private set; }
         public double DiscountAmount { get; private set; }
         public double PayAmount { get; private set; }
-        public string IssueTrackingNo { get; private set; }
+        public string? IssueTrackingNo { get; private set; }
         public long RefId { get; private set; }
         public bool IsPaid { get; private set; }
         public bool IsCanceled { get; private set; }

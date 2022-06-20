@@ -1,4 +1,5 @@
 using _0_Framework.Application;
+using _0_Framework.Application.ZarinPal;
 using _0_Framework.Infrastructure;
 using AccountManagement.Configuration;
 using BlogManagement.Configuration;
@@ -34,12 +35,13 @@ namespace ServiceHost
 
             services.AddSingleton(HtmlEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Arabic));
             services.AddSingleton<IPasswordHasher, PasswordHasher>();
+            services.AddScoped<IZarinPalFactory, ZarinPalFactory>();
             services.AddScoped<IFileUploader, FileUploader>();
             services.AddScoped<IAuthHelper, AuthHelper>();
             services.Configure<CookiePolicyOptions>(options =>
             {
-                options.CheckConsentNeeded = Context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.Strict;
+                options.CheckConsentNeeded = Context => false;
+                options.MinimumSameSitePolicy = SameSiteMode.Lax;
             });
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, c =>

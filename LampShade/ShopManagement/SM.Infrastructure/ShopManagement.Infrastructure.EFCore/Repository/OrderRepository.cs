@@ -15,5 +15,13 @@ namespace ShopManagement.Infrastructure.EFCore.Repository
         }
 
         #endregion
+
+        public double GetAmountBy(long id)
+        {
+            var order = _context.Orders.Select(x => new { x.Id, x.PayAmount })
+                .FirstOrDefault(x => x.Id == id);
+
+            return order is null ? 0 : order.PayAmount;
+        }
     }
 }

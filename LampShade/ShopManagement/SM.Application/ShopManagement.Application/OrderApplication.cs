@@ -38,7 +38,12 @@ namespace ShopManagement.Application
             return order.Id;
         }
 
-        public void PaymentSucceeded(long orderId, long refId)
+        public double GetAmountBy(long id)
+        {
+            return _orderRepository.GetAmountBy(id);
+        }
+
+        public string PaymentSucceeded(long orderId, long refId)
         {
             var symbol = _configuration.GetSection("Symbol").ToString();
             var issueTrackingNo = CodeGenerator.Generate(symbol);
@@ -47,6 +52,7 @@ namespace ShopManagement.Application
             order.SetIssueTrackingNo(issueTrackingNo);
             // ToDo : Reduce order items from Inventory 
             _orderRepository.SaveChanges();
+            return issueTrackingNo;
         }
     }
 }
