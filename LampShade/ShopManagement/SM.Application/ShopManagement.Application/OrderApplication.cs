@@ -1,6 +1,7 @@
 ﻿using _0_Framework.Application;
 using Microsoft.Extensions.Configuration;
 using ShopManagement.Application.Contracts.Order;
+using ShopManagement.Domain.DomainServices;
 using ShopManagement.Domain.OrderAgg;
 
 namespace ShopManagement.Application
@@ -12,20 +13,22 @@ namespace ShopManagement.Application
         private readonly IAuthHelper _authHelper;
         private readonly IConfiguration _configuration;
         private readonly IOrderRepository _orderRepository;
+        private readonly IShopInverntoryAcl _shopInventoryAcl;
 
         public OrderApplication(IAuthHelper authHelper, IOrderRepository orderRepository,
-            IConfiguration configuration)
+            IConfiguration configuration, IShopInverntoryAcl shopInventoryAcl)
         {
             _authHelper = authHelper;
             _configuration = configuration;
             _orderRepository = orderRepository;
+            _shopInventoryAcl = shopInventoryAcl;
         }
 
         #endregion
 
         public long PlaceOrder(Cart cart)
         {
-            var order = new Order(_authHelper.CurrentAccountId(), cart.TotalAmount, cart.DiscountAmount, cart.PayAmount);
+            var order = new Order(_authHelper.CurrentAccountId(), cart.PaymentMethod, cart.TotalAmount, cart.DiscountAmount, cart.PayAmount);
 
             cart.CartItems.ForEach(cartItem =>
             {
@@ -50,7 +53,9 @@ namespace ShopManagement.Application
             var order = _orderRepository.Get(orderId);
             order.PaymentSucceeded(refId);
             order.SetIssueTrackingNo(issueTrackingNo);
-            // ToDo : Reduce order items from Inventory 
+
+            if (!_shopInventoryAcl.ReduceFromInventory(order.Items)) return "";
+
             _orderRepository.SaveChanges();
             return issueTrackingNo;
         }

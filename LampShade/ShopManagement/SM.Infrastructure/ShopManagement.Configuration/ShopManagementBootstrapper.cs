@@ -13,6 +13,7 @@ using ShopManagement.Application.Contracts.ProductCategory;
 using ShopManagement.Application.Contracts.ProductPicture;
 using ShopManagement.Application.Contracts.Slide;
 using ShopManagement.Configuration.Permissions;
+using ShopManagement.Domain.DomainServices;
 using ShopManagement.Domain.OrderAgg;
 using ShopManagement.Domain.ProductAgg;
 using ShopManagement.Domain.ProductCategoryAgg;
@@ -20,6 +21,7 @@ using ShopManagement.Domain.ProductPictureAgg;
 using ShopManagement.Domain.SlideAgg;
 using ShopManagement.Infrastructure.EFCore;
 using ShopManagement.Infrastructure.EFCore.Repository;
+using ShopManagement.Infrastructure.InventoryAcl;
 
 namespace ShopManagement.Configuration
 {
@@ -43,6 +45,7 @@ namespace ShopManagement.Configuration
             services.AddScoped<IOrderApplication, OrderApplication>();
 
             services.AddSingleton<ICartService, CartService>();
+            services.AddScoped<IShopInverntoryAcl, ShopInventoryAcl>();
 
             services.AddScoped<ISlideQuery, SlideQuery>();
             services.AddScoped<IProductCategoryQuery, ProductCategoryQuery>();

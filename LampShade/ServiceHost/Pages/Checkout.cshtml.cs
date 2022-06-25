@@ -56,18 +56,25 @@ namespace ServiceHost.Pages
             _cartService.Set(Cart);
         }
 
-        public IActionResult OnGetPay()
+        public IActionResult OnPostPay(byte paymentMethod)
         {
             var cart = _cartService.Get();
             var cartItems = _productQuery.CheckInventoryStatusFor(cart.CartItems);
             if (cartItems.Any(x => !x.IsInStock)) return RedirectToPage("./Cart");
 
+            cart.SetPaymentMethodId(paymentMethod);
             var orderId = _orderApplication.PlaceOrder(cart);
-            var paymentResponse = _zarinpalFactory.CreatePaymentRequest(cart.PayAmount.ToString(), "", "",
-                "جهت خرید اجناس دفتر مشاور املاک", orderId);
+            if (paymentMethod == PaymentType.Online)
+            {
+                var paymentResponse = _zarinpalFactory.CreatePaymentRequest(cart.PayAmount.ToString(), "", "",
+                    "جهت خرید اجناس دفتر مشاور املاک", orderId);
 
-            var paymentUrl = ZarinpalApiUrls.CompletePayment(_zarinpalFactory.Prefix, paymentResponse.Authority);
-            return Redirect(paymentUrl);
+                var paymentUrl = ZarinpalApiUrls.CompletePayment(_zarinpalFactory.Prefix, paymentResponse.Authority);
+                return Redirect(paymentUrl);
+            }
+
+            var result = new PaymentResult();
+            return RedirectToPage("./PaymentResult", result.Succeeded(null, message: PaymentMessages.PaymentLater));
         }
 
         public IActionResult OnGetCallBack([FromQuery] long oId, [FromQuery] string authority,

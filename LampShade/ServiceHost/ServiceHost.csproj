@@ -7,10 +7,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Content Remove="Pages\PaymentResult.cshtml" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.5">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -39,14 +35,6 @@
 	  <ProjectReference Include="..\DiscountManagement\DM.Infrastructure\DiscountManagement.Configuration\DiscountManagement.Configuration.csproj" />
 	  <ProjectReference Include="..\InventoryManagement\IM.Infrastructure\InventoryManagement.Configuration\InventoryManagement.Configuration.csproj" />
 	  <ProjectReference Include="..\ShopManagement\SM.Infrastructure\ShopManagement.Configuration\ShopManagement.Configuration.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <UpToDateCheckInput Remove="Pages\PaymentResult.cshtml" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <_ContentIncludedByDefault Remove="Pages\PaymentResult.cshtml" />
 	</ItemGroup>
 
 </Project>

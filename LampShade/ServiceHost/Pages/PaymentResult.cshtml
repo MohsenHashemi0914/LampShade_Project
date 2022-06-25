@@ -34,9 +34,12 @@
                         <p>
                             @Model.Result.Message
                         </p>
-                        <p>
-                            شماره پیگیری : @Model.Result.IssueTrackingNo
-                        </p>
+                        @if (!string.IsNullOrWhiteSpace(Model.Result.IssueTrackingNo))
+                        {
+                            <p>
+                                شماره پیگیری : @Model.Result.IssueTrackingNo
+                            </p>
+                        }
                     </div>
                 }
                 else

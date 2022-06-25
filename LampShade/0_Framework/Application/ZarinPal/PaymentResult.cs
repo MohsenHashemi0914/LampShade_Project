@@ -6,7 +6,7 @@
         public string Message { get; set; }
         public string IssueTrackingNo { get; set; }
 
-        public PaymentResult Succeeded(string issueTrackingNo, string message = "پرداخت با موفقیت انجام شد .")
+        public PaymentResult Succeeded(string issueTrackingNo, string message = PaymentMessages.PaymentSucceeded)
         {
             IsSuccessful = true;
             Message = message;
@@ -14,7 +14,7 @@
             return this;
         }
 
-        public PaymentResult Failed(string message = "عملیات پرداخت با شکست مواجه شد. در صورت کسر وجه از حساب مبلغ تا 24 ساعت به حساب شما بازگردانده خواهد شد .")
+        public PaymentResult Failed(string message = PaymentMessages.PaymentFailed)
         {
             Message = message;
             IsSuccessful = false;

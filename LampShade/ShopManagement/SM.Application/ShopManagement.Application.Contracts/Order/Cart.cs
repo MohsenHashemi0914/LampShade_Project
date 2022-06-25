@@ -5,6 +5,7 @@
         public double TotalAmount { get; set; }
         public double DiscountAmount { get; set; }
         public double PayAmount { get; set; }
+        public byte PaymentMethod { get; set; }
         public List<CartItem> CartItems { get; set; }
 
         public Cart()
@@ -16,6 +17,11 @@
         {
             CartItems.Add(cartItem);
             CalculateCart(cartItem);
+        }
+
+        public void SetPaymentMethodId(byte paymentmethod)
+        {
+            PaymentMethod = paymentmethod;
         }
 
         #region Utilities

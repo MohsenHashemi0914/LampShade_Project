@@ -5,6 +5,7 @@ namespace ShopManagement.Domain.OrderAgg
     public class Order : BaseEntity<long>
     {
         public long AccountId { get; private set; }
+        public byte PaymentMethod { get; private set; }
         public double TotalAmount { get; private set; }
         public double DiscountAmount { get; private set; }
         public double PayAmount { get; private set; }
@@ -14,9 +15,10 @@ namespace ShopManagement.Domain.OrderAgg
         public bool IsCanceled { get; private set; }
         public List<OrderItem> Items { get; private set; }
 
-        public Order(long accountId, double totalAmount, double discountAmount, double payAmount)
+        public Order(long accountId, byte paymentMethod, double totalAmount, double discountAmount, double payAmount)
         {
             AccountId = accountId;
+            PaymentMethod = paymentMethod;
             TotalAmount = totalAmount;
             DiscountAmount = discountAmount;
             PayAmount = payAmount;

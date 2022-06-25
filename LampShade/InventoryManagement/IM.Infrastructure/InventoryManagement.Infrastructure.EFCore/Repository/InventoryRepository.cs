@@ -1,9 +1,8 @@
-﻿using _0_Framework.Infrastructure;
+﻿using _0_Framework.Application;
+using _0_Framework.Infrastructure;
+using AccountManagement.Infrastructure.EFCore;
 using InventoryManagement.Application.Contracts.Inventory;
 using InventoryManagement.Domain.InventoryAgg;
-using System.Collections.Generic;
-using System.Linq;
-using _0_Framework.Application;
 using ShopManagement.Infrastructure.EFCore;
 
 namespace InventoryManagement.Infrastructure.EFCore.Repository
@@ -12,13 +11,16 @@ namespace InventoryManagement.Infrastructure.EFCore.Repository
     {
         #region Constructor
 
-        private readonly InventoryContext _context;
         private readonly ShopContext _shopContext;
+        private readonly InventoryContext _context;
+        private readonly AccountContext _accountContext;
 
-        public InventoryRepository(InventoryContext context, ShopContext shopContext) : base(context)
+        public InventoryRepository(InventoryContext context, ShopContext shopContext,
+            AccountContext accountContext) : base(context)
         {
             _context = context;
             _shopContext = shopContext;
+            _accountContext = accountContext;
         }
 
         #endregion
@@ -70,8 +72,9 @@ namespace InventoryManagement.Infrastructure.EFCore.Repository
 
         public List<InventoryOperationViewModel> GetOperationLog(long inventoryId)
         {
+            var accounts = _accountContext.Accounts.Select(x => new { x.Id, x.FullName }).ToList();
             var inventory = _context.Inventory.Find(inventoryId);
-            return inventory.Operations
+            var operations = inventory.Operations
                 .Select(x => new InventoryOperationViewModel
                 {
                     Id = x.Id,
@@ -81,9 +84,15 @@ namespace InventoryManagement.Infrastructure.EFCore.Repository
                     CurrentCount = x.CurrentCount,
                     Description = x.Description,
                     OperatorId = x.OperatorId,
-                    Operator = "مدیر سیستم",
                     OrderId = x.OrderId
                 }).OrderByDescending(x => x.Id).ToList();
+
+            operations.ForEach(operation =>
+            {
+                operation.Operator = accounts.FirstOrDefault(x => x.Id == operation.OperatorId)?.FullName;
+            });
+
+            return operations;
         }
     }
 }
