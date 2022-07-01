@@ -117,5 +117,10 @@ namespace AccountManagement.Application
         {
             return _accountRepository.Search(searchModel);
         }
+
+        public List<AccountViewModel> GetAccouts()
+        {
+            return _accountRepository.GetAccouts();
+        }
     }
 }

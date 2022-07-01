@@ -53,11 +53,34 @@ namespace ShopManagement.Application
             var order = _orderRepository.Get(orderId);
             order.PaymentSucceeded(refId);
             order.SetIssueTrackingNo(issueTrackingNo);
-
-            if (!_shopInventoryAcl.ReduceFromInventory(order.Items)) return "";
+            
+            if(!_shopInventoryAcl.ReduceFromInventory(order.Items)) return "";
 
             _orderRepository.SaveChanges();
             return issueTrackingNo;
+        }
+
+        public List<OrderViewModel> Search(OrderSearchModel searchModel)
+        {
+            return _orderRepository.Search(searchModel);
+        }
+
+        public OperationResult Cancel(long id)
+        {
+            var operation = new OperationResult();
+            var order = _orderRepository.Get(id);
+
+            if (order == null)
+                return operation.Failed(ApplicationMessages.RecordNotFound);
+
+            order.Cancel();
+            _orderRepository.SaveChanges();
+            return operation.Succeeded();
+        }
+
+        public List<OrderItemViewModel> GetItemsBy(long orderId)
+        {
+            return _orderRepository.GetItemsBy(orderId);
         }
     }
 }
