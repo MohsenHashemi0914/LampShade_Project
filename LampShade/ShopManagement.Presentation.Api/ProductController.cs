@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ServiceHost.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class ProductController : ControllerBase
     {
         #region Constructor

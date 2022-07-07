@@ -1,4 +1,6 @@
 ﻿using _0_Framework.Infrastructure;
+using _01_LampshadeQuery.Contracts.Inventory;
+using _01_LampshadeQuery.Query;
 using InventoryManagement.Application;
 using InventoryManagement.Application.Contracts.Inventory;
 using InventoryManagement.Configuration.Permissions;
@@ -17,6 +19,7 @@ namespace InventoryManagement.Configuration
             services.AddScoped<IInventoryRepository, InventoryRepository>();
             services.AddScoped<IInventoryApplication, InventoryApplication>();
             services.AddScoped<IPermissionExposer, InventoryPermissionExposer>();
+            services.AddScoped<IInventoryQuery, InventoryQuery>();
 
             services.AddDbContext<InventoryContext>(options => options.UseSqlServer(connectionString));
         }

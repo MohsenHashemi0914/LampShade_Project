@@ -77,4 +77,33 @@ function changeCartItemCount(id, totalItemPriceId, count) {
     $(`#${totalItemPriceId}`).text(newTotalPrice);
     $.cookie(cookieName, JSON.stringify(products), { expires: 2, path: "/" });
     updateCart();
+
+    const settings = {
+        "url": "https://localhost:5001/api/inventory",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "data": JSON.stringify({ "productId": id, "count": count })
+    };
+
+    $.ajax(settings).done(function (data) {
+        if (data.isInStock == false) {
+            const warningsDiv = $('#productStockWarnings');
+            if ($(`#${id}`).length == 0) {
+                warningsDiv.append(`
+                      <div class="alert alert-warning" id="${id}">
+                            <i class="fa fa-warning"></i>کالای
+                            <strong>${data.productName}</strong>
+                            به تعداد درخواستی در انبار موجود نمیباشد
+                        </div>
+               `);
+            }
+        }
+        else {
+            if ($(`#${id}`).length > 0)
+                $(`#${id}`).remove();
+        }
+    });
 }
