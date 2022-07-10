@@ -1,4 +1,6 @@
 using _0_Framework.Application;
+using _0_Framework.Application.Email;
+using _0_Framework.Application.Sms;
 using _0_Framework.Application.ZarinPal;
 using _0_Framework.Infrastructure;
 using AccountManagement.Configuration;
@@ -40,11 +42,15 @@ namespace ServiceHost
             services.AddScoped<IZarinPalFactory, ZarinPalFactory>();
             services.AddScoped<IFileUploader, FileUploader>();
             services.AddScoped<IAuthHelper, AuthHelper>();
+            services.AddScoped<ISmsService, SmsService>();
+            services.AddScoped<IEmailService, EmailService>();
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 options.CheckConsentNeeded = Context => false;
                 options.MinimumSameSitePolicy = SameSiteMode.Lax;
             });
+
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, c =>
                 {
@@ -67,6 +73,12 @@ namespace ServiceHost
                 options.AddPolicy("Discount", builder =>
                 builder.RequireRole(Roles.Administrator));
             });
+
+            services.AddCors(options => options.AddPolicy("CorsPolicy", builder =>
+                builder
+                .WithOrigins("https://localhost:5002")
+                .AllowAnyHeader()
+                .AllowAnyMethod()));
 
             services.AddRazorPages()
                 .AddMvcOptions(x => x.Filters.Add<SecurityPageFilter>())
@@ -100,6 +112,7 @@ namespace ServiceHost
             app.UseCookiePolicy();
             app.UseRouting();
             app.UseAuthorization();
+            app.UseCors("CorsPolicy");
 
             app.UseEndpoints(endpoints =>
             {

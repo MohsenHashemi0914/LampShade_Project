@@ -98,7 +98,9 @@ namespace AccountManagement.Application
                 .Select(x => x.Code)
                 .ToList();
 
-            var authViewModel = new AuthViewModel(account.Id, account.RoleId, account.FullName, account.UserName, permissions);
+            var authViewModel = new AuthViewModel(account.Id, account.RoleId, account.FullName,
+                account.UserName, account.Mobile, permissions);
+
             _authHelper.Signin(authViewModel);
             return operation.Succeeded();
         }
@@ -111,6 +113,16 @@ namespace AccountManagement.Application
         public EditAccount GetDetails(long id)
         {
             return _accountRepository.GetDetails(id);
+        }
+
+        public AccountViewModel GetAccountBy(long id)
+        {
+            var account = _accountRepository.Get(id);
+            return new AccountViewModel
+            {
+                FullName = account?.FullName,
+                Mobile = account?.Mobile
+            };
         }
 
         public List<AccountViewModel> Search(AccountSearchModel searchModel)

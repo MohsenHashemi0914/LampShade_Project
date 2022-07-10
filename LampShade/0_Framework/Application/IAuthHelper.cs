@@ -7,6 +7,7 @@
         bool IsAuthenticated();
         long CurrentAccountId();
         string CurrentAccountRole();
+        string GetCurrentAccountMobile();
         AuthViewModel CurrentAccountInfo();
         List<int> GetCurrentAccountPermissions();
     }

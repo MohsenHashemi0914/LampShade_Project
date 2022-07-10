@@ -1,4 +1,5 @@
 ﻿using _0_Framework.Application;
+using _0_Framework.Application.Sms;
 using Microsoft.Extensions.Configuration;
 using ShopManagement.Application.Contracts.Order;
 using ShopManagement.Domain.DomainServices;
@@ -11,15 +12,20 @@ namespace ShopManagement.Application
         #region Constructor
 
         private readonly IAuthHelper _authHelper;
+        private readonly ISmsService _smsService;
         private readonly IConfiguration _configuration;
+        private readonly IShopAccountAcl _shopAccountAcl;
         private readonly IOrderRepository _orderRepository;
         private readonly IShopInverntoryAcl _shopInventoryAcl;
 
-        public OrderApplication(IAuthHelper authHelper, IOrderRepository orderRepository,
-            IConfiguration configuration, IShopInverntoryAcl shopInventoryAcl)
+        public OrderApplication(IAuthHelper authHelper, ISmsService smsService, 
+            IConfiguration configuration, IShopAccountAcl shopAccountAcl,
+            IOrderRepository orderRepository, IShopInverntoryAcl shopInventoryAcl)
         {
             _authHelper = authHelper;
+            _smsService = smsService;
             _configuration = configuration;
+            _shopAccountAcl = shopAccountAcl;
             _orderRepository = orderRepository;
             _shopInventoryAcl = shopInventoryAcl;
         }
@@ -48,7 +54,8 @@ namespace ShopManagement.Application
 
         public string PaymentSucceeded(long orderId, long refId)
         {
-            var symbol = _configuration.GetSection("Symbol").ToString();
+            //var symbol = _configuration.GetValue<string>("Symbol");
+            var symbol = _configuration["Symbol"];
             var issueTrackingNo = CodeGenerator.Generate(symbol);
             var order = _orderRepository.Get(orderId);
             order.PaymentSucceeded(refId);
@@ -57,6 +64,11 @@ namespace ShopManagement.Application
             if(!_shopInventoryAcl.ReduceFromInventory(order.Items)) return "";
 
             _orderRepository.SaveChanges();
+
+            var customer = _shopAccountAcl.GetAccountBy(order.AccountId);
+            _smsService.Send(customer.mobile,
+                $"{customer.name} عزیز سفارش شما با شماره پیگیری {issueTrackingNo} با موفقیت پرداخت شد و ارسال خواهد شد . با تشکر از اعتماد شما");
+
             return issueTrackingNo;
         }
 

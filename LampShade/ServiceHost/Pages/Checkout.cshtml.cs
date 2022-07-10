@@ -74,6 +74,7 @@ namespace ServiceHost.Pages
             }
 
             var result = new PaymentResult();
+            Response.Cookies.Delete(_cookieName);
             return RedirectToPage("./PaymentResult", result.Succeeded(null, message: PaymentMessages.PaymentLater));
         }
 

@@ -29,6 +29,7 @@ namespace _0_Framework.Application
                 new Claim(ClaimTypes.Name, account.FullName),
                 new Claim(ClaimTypes.Role, account.RoleId.ToString()),
                 new Claim("UserName", account.UserName),
+                new Claim("Mobile", account.Mobile),
                 new Claim("Permissions", permissions)
             };
 
@@ -64,7 +65,12 @@ namespace _0_Framework.Application
 
         public string CurrentAccountRole()
         {
-            return IsAuthenticated() ? _contextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role).Value : null;
+            return IsAuthenticated() ? _contextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type is ClaimTypes.Role).Value : null;
+        }
+
+        public string GetCurrentAccountMobile()
+        {
+            return IsAuthenticated() ? _contextAccessor?.HttpContext?.User?.Claims?.FirstOrDefault(x => x?.Type is "Mobile")?.Value : null;
         }
 
         public AuthViewModel CurrentAccountInfo()
