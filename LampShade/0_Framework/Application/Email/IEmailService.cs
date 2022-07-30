@@ -1,7 +1,9 @@
-﻿namespace _0_Framework.Application.Email
+﻿using _0_Framework.Application.Events;
+
+namespace _0_Framework.Application.Email
 {
     public interface IEmailService
     {
-        void SendEmail(string title, string messageBody, string destination);
+        void SendEmail(object sender, UserDataEventArgs args);
     }
 }

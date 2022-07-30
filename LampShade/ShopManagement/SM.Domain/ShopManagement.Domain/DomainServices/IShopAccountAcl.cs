@@ -2,6 +2,6 @@
 {
     public interface IShopAccountAcl
     {
-        (string name, string mobile) GetAccountBy(long id);
+        KeyValuePair<string, string> GetAccountBy(long id);
     }
 }

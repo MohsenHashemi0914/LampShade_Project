@@ -19,6 +19,9 @@ namespace AccountManagement.Application.Contracts.Account
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string Mobile { get; set; }
 
+        [Required(ErrorMessage = ValidationMessages.IsRequired)]
+        public string Email { get; set; }
+
         [MaxFileSize(3 * 1024 * 1024, ErrorMessage = ValidationMessages.MaxFileSize)]
         public IFormFile? ProfilePhoto { get; set; }
 

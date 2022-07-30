@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using RestSharp;
-using System.Text.Json;
 
 namespace _0_Framework.Application.ZarinPal
 {
@@ -40,7 +40,7 @@ namespace _0_Framework.Application.ZarinPal
             };
 
             var response = CallZarinpalApi(string.Concat($"https://{Prefix}", ZarinpalApiUrls.PaymentRequest), requestBody);
-            return JsonSerializer.Deserialize<PaymentResponse>(response.Content);
+            return JsonConvert.DeserializeObject<PaymentResponse>(response.Content);
         }
 
         public VerificationResponse CreateVerificationRequest(string authority, string amount)
@@ -56,7 +56,7 @@ namespace _0_Framework.Application.ZarinPal
             };
 
             var response = CallZarinpalApi(string.Concat($"https://{Prefix}", ZarinpalApiUrls.VerificationRequest), requestBody);
-            return JsonSerializer.Deserialize<VerificationResponse>(response.Content);
+            return JsonConvert.DeserializeObject<VerificationResponse>(response.Content);
         }
 
         #region Utilities

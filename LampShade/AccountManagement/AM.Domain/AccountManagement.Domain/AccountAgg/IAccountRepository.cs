@@ -1,4 +1,5 @@
-﻿using _0_Framework.Domain;
+﻿using _0_Framework.Application.Events;
+using _0_Framework.Domain;
 using AccountManagement.Application.Contracts.Account;
 
 namespace AccountManagement.Domain.AccountAgg

@@ -16,10 +16,10 @@ namespace ShopManagement.Infrastructure.AccountAcl
 
         #endregion
 
-        public (string name, string mobile) GetAccountBy(long id)
+        public KeyValuePair<string, string> GetAccountBy(long id)
         {
             var account = _accountApplication.GetAccountBy(id);
-            return (account.FullName, account.Mobile);
+            return new KeyValuePair<string, string>(account.FullName, account.Mobile);
         }
     }
 }

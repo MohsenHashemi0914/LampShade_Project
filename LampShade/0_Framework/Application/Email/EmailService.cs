@@ -1,11 +1,24 @@
 ﻿using MimeKit;
 using MailKit.Net.Smtp;
+using _0_Framework.Application.Events;
 
 namespace _0_Framework.Application.Email
 {
     public class EmailService : IEmailService
     {
-        public void SendEmail(string title, string messageBody, string destination)
+        public void SendEmail(object sender, UserDataEventArgs args)
+        {
+            try
+            {
+                SendEmail(args.Title, args.MessageBody, args.Email);
+            }
+            catch (Exception ex)
+            {
+                ; // if email server authentication failed
+            }
+        }
+
+        private void SendEmail(string title, string messageBody, string destination)
         {
             var message = new MimeMessage();
 

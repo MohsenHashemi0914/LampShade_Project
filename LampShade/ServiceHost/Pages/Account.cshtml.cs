@@ -1,3 +1,4 @@
+using _0_Framework.Application.Email;
 using AccountManagement.Application.Contracts.Account;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -11,10 +12,12 @@ namespace ServiceHost.Pages
 
         #region Constructor
 
+        private readonly IEmailService _emailService;
         private readonly IAccountApplication _accountApplication;
 
-        public AccountModel(IAccountApplication accountApplication)
+        public AccountModel(IAccountApplication accountApplication, IEmailService emailService)
         {
+            _emailService = emailService;
             _accountApplication = accountApplication;
         }
 
@@ -41,7 +44,8 @@ namespace ServiceHost.Pages
         }
 
         public IActionResult OnPostRegister(RegisterAccount command)
-        {
+        { 
+            _accountApplication.AccountRegistered += _emailService.SendEmail;
             var result = _accountApplication.Register(command);
             if (!result.IsSucceeded)
                 RegisterMessage = result.Message;

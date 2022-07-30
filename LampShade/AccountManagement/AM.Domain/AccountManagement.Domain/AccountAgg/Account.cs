@@ -9,6 +9,7 @@ namespace AccountManagement.Domain.AccountAgg
         public string UserName { get; private set; }
         public string Password { get; private set; }
         public string Mobile { get; private set; }
+        public string Email { get; private set; }
         public string ProfilePhoto { get; private set; }
         public Role Role { get; private set; }
         public long RoleId { get; private set; }
@@ -18,12 +19,13 @@ namespace AccountManagement.Domain.AccountAgg
         }
 
         public Account(string fullName, string userName, string password,
-            string mobile, string profilePhoto, long roleId)
+            string mobile, string email, string profilePhoto, long roleId)
         {
             FullName = fullName;
             UserName = userName;
             Password = password;
             Mobile = mobile;
+            Email = email;
             ProfilePhoto = profilePhoto;
             RoleId = roleId == 0 ? 2 : roleId;
         }

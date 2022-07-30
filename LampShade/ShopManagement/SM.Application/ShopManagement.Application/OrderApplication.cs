@@ -54,7 +54,6 @@ namespace ShopManagement.Application
 
         public string PaymentSucceeded(long orderId, long refId)
         {
-            //var symbol = _configuration.GetValue<string>("Symbol");
             var symbol = _configuration["Symbol"];
             var issueTrackingNo = CodeGenerator.Generate(symbol);
             var order = _orderRepository.Get(orderId);
@@ -66,8 +65,8 @@ namespace ShopManagement.Application
             _orderRepository.SaveChanges();
 
             var customer = _shopAccountAcl.GetAccountBy(order.AccountId);
-            _smsService.Send(customer.mobile,
-                $"{customer.name} عزیز سفارش شما با شماره پیگیری {issueTrackingNo} با موفقیت پرداخت شد و ارسال خواهد شد . با تشکر از اعتماد شما");
+            _smsService.Send(customer.Value,
+                $"{customer.Key} عزیز سفارش شما با شماره پیگیری {issueTrackingNo} با موفقیت پرداخت شد و ارسال خواهد شد . با تشکر از اعتماد شما");
 
             return issueTrackingNo;
         }

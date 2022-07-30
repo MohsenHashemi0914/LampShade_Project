@@ -1,4 +1,6 @@
 ﻿using _0_Framework.Application;
+using _0_Framework.Application.Email;
+using _0_Framework.Application.Events;
 using AccountManagement.Application.Contracts.Account;
 using AccountManagement.Domain.AccountAgg;
 using AccountManagement.Domain.RoleAgg;
@@ -7,6 +9,8 @@ namespace AccountManagement.Application
 {
     public class AccountApplication : IAccountApplication
     {
+        public event AccountRegisteredEventHandler AccountRegistered;
+
         #region Constructor
 
         private readonly IAuthHelper _authHelper;
@@ -16,7 +20,8 @@ namespace AccountManagement.Application
         private readonly IAccountRepository _accountRepository;
 
         public AccountApplication(IAuthHelper authHelper, IFileUploader fileUploader,
-            IAccountRepository accountRepository, IRoleRepository roleRepository, IPasswordHasher passwordHasher)
+            IAccountRepository accountRepository, IRoleRepository roleRepository,
+            IPasswordHasher passwordHasher)
         {
             _authHelper = authHelper;
             _fileUploader = fileUploader;
@@ -37,10 +42,14 @@ namespace AccountManagement.Application
             var picturePath = "ProfilePhotos";
             var fileName = _fileUploader.Upload(command.ProfilePhoto, picturePath);
 
-            var account = new Account(command.FullName, command.UserName, 
-                password, command.Mobile, fileName, command.RoleId);
+            var account = new Account(command.FullName, command.UserName,
+                password, command.Mobile, command.Email, fileName, command.RoleId);
             _accountRepository.Add(account);
             _accountRepository.SaveChanges();
+
+            OnAccountRegistered(new UserDataEventArgs(account.FullName, account.Email,
+                account.Mobile, account.Password));
+
             return operation.Succeeded();
         }
 
@@ -134,5 +143,14 @@ namespace AccountManagement.Application
         {
             return _accountRepository.GetAccouts();
         }
+
+        #region Events
+
+        protected virtual void OnAccountRegistered(UserDataEventArgs args)
+        {
+            AccountRegistered?.Invoke(this, args);
+        }
+
+        #endregion
     }
 }
