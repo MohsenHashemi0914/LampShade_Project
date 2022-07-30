@@ -11,8 +11,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\01_LampshadeQuery\01_LampshadeQuery.csproj" />
-		<ProjectReference Include="..\InventoryManagement\IM.Application\InventoryManagement.Application.Contracts\InventoryManagement.Application.Contracts.csproj" />
+	  <ProjectReference Include="..\..\..\01_LampshadeQuery\01_LampshadeQuery.csproj" />
+	  <ProjectReference Include="..\..\IM.Application\InventoryManagement.Application.Contracts\InventoryManagement.Application.Contracts.csproj" />
 	</ItemGroup>
 
 </Project>
